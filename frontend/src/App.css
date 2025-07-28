@@ -10,8 +10,24 @@
   }
 }
 
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
 .animate-fade-in-up {
   animation: fade-in-up 0.6s ease-out;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
 }
 
 .animation-delay-200 {
@@ -155,4 +171,43 @@ ul {
   height: 24px;
   display: inline-block;
   vertical-align: middle;
+}
+
+/* Styles pour les code snippets */
+.code-snippet {
+  font-family: 'Fira Code', 'Monaco', 'Menlo', monospace;
+  background: #1f2937;
+  border-radius: 8px;
+  padding: 16px;
+  color: #e5e7eb;
+  font-size: 12px;
+  line-height: 1.4;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.code-snippet pre {
+  margin: 0;
+  overflow: visible;
+}
+
+.code-snippet code {
+  color: #e5e7eb;
+}
+
+/* Styles pour les éléments flottants */
+.floating-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Responsive pour les code snippets */
+@media (max-width: 1280px) {
+  .code-snippet {
+    display: none;
+  }
 }
