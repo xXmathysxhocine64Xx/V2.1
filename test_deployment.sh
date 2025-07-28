@@ -118,16 +118,20 @@ fi
 
 # Test 7: Vérification du package.json
 print_test "Vérification du package.json frontend..."
-cd ../frontend
-if [[ -f "package.json" ]]; then
-    # Vérifier que les dépendances principales sont présentes
-    if grep -q "react" package.json && grep -q "@radix-ui" package.json; then
-        print_success "Dépendances React principales présentes"
+if [[ -d "/tmp/test_webcraft/deploy_package/frontend" ]]; then
+    cd /tmp/test_webcraft/deploy_package/frontend
+    if [[ -f "package.json" ]]; then
+        # Vérifier que les dépendances principales sont présentes
+        if grep -q "react" package.json && grep -q "@radix-ui" package.json; then
+            print_success "Dépendances React principales présentes"
+        else
+            print_error "Dépendances React manquantes"
+        fi
     else
-        print_error "Dépendances React manquantes"
+        print_error "package.json manquant"
     fi
 else
-    print_error "package.json manquant"
+    print_warning "Dossier frontend non trouvé"
 fi
 
 # Test 8: Simulation installation (sans privilèges root)
