@@ -48,15 +48,22 @@ sudo netstat -tlnp | grep :22
 
 ### 2.1 Installation d'OpenSSH Server
 ```bash
+# Mise à jour des paquets
+sudo apt update
+
 # Installation du paquet OpenSSH Server
 sudo apt install openssh-server -y
 
-# Démarrage et activation du service
-sudo systemctl enable ssh
-sudo systemctl start ssh
+# Démarrage du service SSH
+sudo service ssh start
 
 # Vérification du statut
-sudo systemctl status ssh
+sudo service ssh status
+
+# Pour les systèmes avec systemd (optionnel)
+# sudo systemctl enable ssh
+# sudo systemctl start ssh
+# sudo systemctl status ssh
 ```
 
 ### 2.2 Vérification de l'installation
