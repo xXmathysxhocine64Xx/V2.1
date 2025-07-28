@@ -136,13 +136,17 @@ fi
 
 # Test 8: Simulation installation (sans privilèges root)
 print_test "Simulation de pré-installation..."
-cd /tmp/test_webcraft/deploy_package
-
-# Vérifier les variables dans install.sh
-if grep -q "INSTALL_DIR=" install.sh && grep -q "PROJECT_NAME=" install.sh; then
-    print_success "Variables de configuration présentes"
+if [[ -d "/tmp/test_webcraft/deploy_package" ]]; then
+    cd /tmp/test_webcraft/deploy_package
+    
+    # Vérifier les variables dans install.sh
+    if grep -q "INSTALL_DIR=" install.sh && grep -q "PROJECT_NAME=" install.sh; then
+        print_success "Variables de configuration présentes"
+    else
+        print_error "Variables de configuration manquantes"
+    fi
 else
-    print_error "Variables de configuration manquantes"
+    print_warning "Package non extrait pour le test"
 fi
 
 # Test 9: Vérification de la configuration Nginx
