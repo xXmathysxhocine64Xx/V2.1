@@ -73,6 +73,45 @@ const HeroSection = () => {
     }
   ];
 
+  const backgroundCodeLines = [
+    "import React from 'react';",
+    "const WebDev = () => {",
+    "  return (",
+    "    <div className='container'>",
+    "      <h1>Professional Website</h1>",
+    "    </div>",
+    "  );",
+    "};",
+    "export default WebDev;",
+    "",
+    "/* CSS Styles */",
+    ".container {",
+    "  max-width: 1200px;",
+    "  margin: 0 auto;",
+    "  padding: 2rem;",
+    "}",
+    "",
+    "function initializeWebsite() {",
+    "  const config = {",
+    "    responsive: true,",
+    "    modern: true,",
+    "    optimized: true",
+    "  };",
+    "  return new Website(config);",
+    "}",
+    "",
+    "<div className='hero-banner'>",
+    "  <h1>Innovative Design</h1>",
+    "  <p>Next-gen solutions</p>",
+    "</div>",
+    "",
+    ".hero-banner {",
+    "  background: linear-gradient(45deg, #3b82f6, #1e40af);",
+    "  color: white;",
+    "  text-align: center;",
+    "}"
+  ];
+
   const typeWriter = (text, snippetId, delay = 0) => {
     setTimeout(() => {
       let i = 0;
@@ -85,7 +124,6 @@ const HeroSection = () => {
           i++;
         } else {
           clearInterval(timer);
-          // Supprimer le curseur après l'animation
           setTimeout(() => {
             setCurrentLines(prev => ({
               ...prev,
@@ -93,12 +131,11 @@ const HeroSection = () => {
             }));
           }, 1000);
         }
-      }, 30); // Vitesse de frappe (30ms par caractère)
+      }, 30);
     }, delay);
   };
 
   useEffect(() => {
-    // Démarrer les animations de typewriter pour chaque snippet
     codeSnippets.forEach(snippet => {
       setCurrentLines(prev => ({
         ...prev,
@@ -109,7 +146,49 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section id="accueil" className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 pt-16 relative overflow-hidden">
+    <section id="accueil" className="min-h-screen relative overflow-hidden">
+      {/* Background animé avec lignes de code */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
+        {/* Lignes de code en arrière-plan */}
+        <div className="absolute inset-0 opacity-20">
+          {backgroundCodeLines.map((line, index) => (
+            <div
+              key={index}
+              className={`absolute text-xs text-green-400 font-mono whitespace-nowrap animate-slide-right`}
+              style={{
+                top: `${(index * 30) % 100}%`,
+                left: '-100%',
+                animationDelay: `${index * 0.3}s`,
+                animationDuration: '15s'
+              }}
+            >
+              {line}
+            </div>
+          ))}
+        </div>
+        
+        {/* Particules flottantes */}
+        <div className="absolute inset-0">
+          {Array.from({ length: 50 }).map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-blue-400 rounded-full animate-float-particle"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 5}s`,
+                animationDuration: `${3 + Math.random() * 4}s`
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Grille technologique */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="h-full w-full bg-grid-pattern"></div>
+        </div>
+      </div>
+
       {/* Code snippets flottants avec animation typewriter */}
       <div className="absolute inset-0 pointer-events-none">
         {codeSnippets.map((snippet, index) => (
@@ -122,7 +201,7 @@ const HeroSection = () => {
               'right-12 top-80'
             } hidden xl:block`}
           >
-            <div className="bg-gray-900 rounded-lg p-4 shadow-2xl max-w-xs animate-float opacity-90 hover:opacity-100 transition-opacity duration-300">
+            <div className="bg-gray-900/90 backdrop-blur-sm rounded-lg p-4 shadow-2xl max-w-xs animate-float opacity-90 hover:opacity-100 transition-opacity duration-300 border border-blue-500/20">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-xs text-blue-400 font-semibold">{snippet.language}</span>
                 <div className="flex space-x-1">
@@ -142,8 +221,81 @@ const HeroSection = () => {
         ))}
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
-        <div className="text-center">
+      {/* Contenu principal avec effet hero style GameBoost */}
+      <div className="relative z-10 pt-32 pb-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <div className="animate-fade-in-up">
+              <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                <span className="text-white">Créons ensemble votre</span>
+                <br />
+                <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent animate-gradient-x">
+                  site web parfait
+                </span>
+              </h1>
+              <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+                Nous concevons et développons des sites web modernes, performants et sur mesure pour propulser votre entreprise vers le succès digital.
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-fade-in-up animation-delay-200">
+              <Button 
+                onClick={scrollToContact}
+                size="lg"
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border-0 rounded-full"
+              >
+                Demander un devis
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+              <Button 
+                onClick={scrollToPortfolio}
+                variant="outline"
+                size="lg"
+                className="border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white px-8 py-4 text-lg transition-all duration-300 transform hover:scale-105 backdrop-blur-sm rounded-full"
+              >
+                Voir nos réalisations
+              </Button>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto animate-fade-in-up animation-delay-400">
+              <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-2 border border-white/20">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Code className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="text-xl font-semibold text-white mb-4">Développement sur mesure</h3>
+                <p className="text-gray-300 leading-relaxed">
+                  Création de sites web uniques adaptés à vos besoins spécifiques et à votre identité de marque.
+                </p>
+              </div>
+
+              <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-2 border border-white/20">
+                <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Palette className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="text-xl font-semibold text-white mb-4">Refonte moderne</h3>
+                <p className="text-gray-300 leading-relaxed">
+                  Modernisation de votre site existant avec les dernières technologies et tendances du web.
+                </p>
+              </div>
+
+              <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-2 border border-white/20">
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Zap className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="text-xl font-semibold text-white mb-4">Performance optimisée</h3>
+                <p className="text-gray-300 leading-relaxed">
+                  Sites rapides, sécurisés et optimisés pour les moteurs de recherche et l'expérience utilisateur.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default HeroSection;
           <div className="animate-fade-in-up">
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
               Créons ensemble votre
