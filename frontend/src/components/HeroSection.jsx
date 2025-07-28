@@ -17,9 +17,83 @@ const HeroSection = () => {
     }
   };
 
+  const codeSnippets = [
+    {
+      language: 'HTML',
+      code: `<div class="hero-section">
+  <h1>Site Web Moderne</h1>
+  <p>Interface responsive</p>
+</div>`,
+      position: 'left-top'
+    },
+    {
+      language: 'CSS',
+      code: `.hero-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 60px 0;
+  text-align: center;
+}`,
+      position: 'right-top'
+    },
+    {
+      language: 'JavaScript',
+      code: `const createWebsite = () => {
+  const site = new ModernWebsite();
+  site.addResponsiveDesign();
+  site.optimizePerformance();
+  return site;
+};`,
+      position: 'left-middle'
+    },
+    {
+      language: 'React',
+      code: `const WebsiteComponent = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  
   return (
-    <section id="accueil" className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 pt-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div className="website-container">
+      <Header />
+      <MainContent />
+      <Footer />
+    </div>
+  );
+};`,
+      position: 'right-middle'
+    }
+  ];
+
+  return (
+    <section id="accueil" className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 pt-16 relative overflow-hidden">
+      {/* Code snippets flottants */}
+      <div className="absolute inset-0 pointer-events-none">
+        {codeSnippets.map((snippet, index) => (
+          <div
+            key={index}
+            className={`absolute ${
+              snippet.position === 'left-top' ? 'left-8 top-32' :
+              snippet.position === 'right-top' ? 'right-8 top-48' :
+              snippet.position === 'left-middle' ? 'left-12 top-96' :
+              'right-12 top-80'
+            } hidden xl:block`}
+          >
+            <div className="bg-gray-900 rounded-lg p-4 shadow-2xl max-w-xs animate-float opacity-80 hover:opacity-100 transition-opacity duration-300">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-xs text-blue-400 font-semibold">{snippet.language}</span>
+                <div className="flex space-x-1">
+                  <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                  <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                </div>
+              </div>
+              <pre className="text-xs text-gray-300 overflow-hidden">
+                <code>{snippet.code}</code>
+              </pre>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
         <div className="text-center">
           <div className="animate-fade-in-up">
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
