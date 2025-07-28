@@ -43,7 +43,7 @@ const PortfolioSection = () => {
       title: "Site Responsive",
       category: "Refonte",
       description: "Refonte complète d'un site existant avec optimisation mobile",
-      image: "https://images.pexels.com/photos/6373045/pexels-photo-6373045.jpeg",
+      image: "https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHwxfHxyZXNwb25zaXZlJTIwZGVzaWdufGVufDB8fHx8MTc1MzczODExN3ww&ixlib=rb-4.1.0&q=85",
       technologies: ["HTML5", "CSS3", "JavaScript", "Bootstrap"]
     }
   ];
