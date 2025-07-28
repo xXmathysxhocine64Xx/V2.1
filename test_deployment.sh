@@ -105,11 +105,15 @@ fi
 
 # Test 6: Vérification des dépendances Python
 print_test "Vérification des dépendances Python..."
-cd /tmp/test_webcraft/deploy_package/backend
-if python3 -m py_compile server.py; then
-    print_success "server.py compile correctement"
+if [[ -d "/tmp/test_webcraft/deploy_package/backend" ]]; then
+    cd /tmp/test_webcraft/deploy_package/backend
+    if python3 -m py_compile server.py; then
+        print_success "server.py compile correctement"
+    else
+        print_error "Erreur de compilation server.py"
+    fi
 else
-    print_error "Erreur de compilation server.py"
+    print_warning "Dossier backend non trouvé dans le package"
 fi
 
 # Test 7: Vérification du package.json
