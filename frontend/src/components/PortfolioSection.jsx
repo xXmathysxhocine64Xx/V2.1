@@ -22,7 +22,7 @@ const PortfolioSection = () => {
       title: "Portfolio Créatif",
       category: "Portfolio",
       description: "Portfolio interactif pour un studio de design avec animations fluides",
-      image: "https://images.unsplash.com/photo-1527443195645-1133f7f28990?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHw0fHx3ZWJzaXRlJTIwbW9ja3VwfGVufDB8fHx8MTc1MzczNzY5Nnww&ixlib=rb-4.1.0&q=85",
+      image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Njl8MHwxfHNlYXJjaHwxfHxwb3J0Zm9saW8lMjB3ZWJzaXRlfGVufDB8fHx8MTc1MzczODExM3ww&ixlib=rb-4.1.0&q=85",
       technologies: ["React", "Framer Motion", "GraphQL", "Gatsby"]
     },
     {
