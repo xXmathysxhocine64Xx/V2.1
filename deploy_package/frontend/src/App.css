@@ -1,0 +1,328 @@
+/* Animations personnalisées */
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes slide-right {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+@keyframes float-particle {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+}
+
+@keyframes gradient-x {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-slide-right {
+  animation: slide-right 15s linear infinite;
+}
+
+.animate-float-particle {
+  animation: float-particle 5s ease-in-out infinite;
+}
+
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 3s ease infinite;
+}
+
+.typing-cursor {
+  color: #00ff00;
+  animation: blink 1s infinite;
+  font-weight: bold;
+}
+
+.animation-delay-200 {
+  animation-delay: 0.2s;
+}
+
+.animation-delay-400 {
+  animation-delay: 0.4s;
+}
+
+/* Grille technologique */
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Scroll smooth */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Styles pour les sections */
+section {
+  scroll-margin-top: 80px;
+}
+
+/* Transitions globales pour les éléments interactifs */
+button, a, input, textarea, select {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Amélioration des focus states */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Styles pour les cards hover */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles pour les boutons */
+.btn-primary {
+  background: linear-gradient(135deg, #3B82F6, #1E40AF);
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+}
+
+/* Styles pour les images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Styles pour les animations au scroll */
+.scroll-animation {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scroll-animation.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Styles pour le header fixe */
+.header-blur {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Styles pour les gradients subtils */
+.gradient-bg {
+  background: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%);
+}
+
+/* Styles pour les textes */
+.text-gradient {
+  background: linear-gradient(135deg, #3B82F6, #1E40AF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Styles pour les formulaires */
+.form-input {
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 16px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input:focus {
+  border-color: #3B82F6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Styles pour les badges */
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  background: #F3F4F6;
+  color: #374151;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Styles pour les liens */
+a {
+  color: #3B82F6;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #1E40AF;
+}
+
+/* Styles pour les listes */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* Styles pour les icônes */
+.icon {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Styles pour les code snippets */
+.code-snippet {
+  font-family: 'Fira Code', 'Monaco', 'Menlo', monospace;
+  background: #1f2937;
+  border-radius: 8px;
+  padding: 16px;
+  color: #e5e7eb;
+  font-size: 12px;
+  line-height: 1.4;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.code-snippet pre {
+  margin: 0;
+  overflow: visible;
+}
+
+.code-snippet code {
+  color: #e5e7eb;
+  font-family: 'Fira Code', 'Monaco', 'Menlo', monospace;
+}
+
+/* Styles pour les éléments flottants */
+.floating-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Styles pour l'animation de typewriter */
+.font-mono {
+  font-family: 'Fira Code', 'Monaco', 'Menlo', monospace;
+}
+
+/* Responsive pour les code snippets */
+@media (max-width: 1280px) {
+  .code-snippet {
+    display: none;
+  }
+}
+
+/* Amélioration des animations */
+.animate-float:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.animate-float:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.animate-float:nth-child(3) {
+  animation-delay: 1s;
+}
+
+.animate-float:nth-child(4) {
+  animation-delay: 1.5s;
+}
+
+/* Styles pour les ombres 3D */
+.shadow-3xl {
+  box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Styles pour les glassmorphism */
+.backdrop-blur-sm {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* Styles pour les bordures semi-transparentes */
+.border-white\/20 {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Styles pour les backgrounds semi-transparents */
+.bg-white\/10 {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.bg-gray-900\/90 {
+  background-color: rgba(17, 24, 39, 0.9);
+}
+
+.border-blue-500\/20 {
+  border-color: rgba(59, 130, 246, 0.2);
+}
