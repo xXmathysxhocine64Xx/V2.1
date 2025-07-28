@@ -1,34 +1,158 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+/* Animations personnalisées */
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out;
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+.animation-delay-200 {
+  animation-delay: 0.2s;
 }
 
-.App-link {
-    color: #61dafb;
+.animation-delay-400 {
+  animation-delay: 0.4s;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+/* Scroll smooth */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Styles pour les sections */
+section {
+  scroll-margin-top: 80px;
+}
+
+/* Transitions globales pour les éléments interactifs */
+button, a, input, textarea, select {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Amélioration des focus states */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Styles pour les cards hover */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles pour les boutons */
+.btn-primary {
+  background: linear-gradient(135deg, #3B82F6, #1E40AF);
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+}
+
+/* Styles pour les images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Styles pour les animations au scroll */
+.scroll-animation {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scroll-animation.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Styles pour le header fixe */
+.header-blur {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Styles pour les gradients subtils */
+.gradient-bg {
+  background: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%);
+}
+
+/* Styles pour les textes */
+.text-gradient {
+  background: linear-gradient(135deg, #3B82F6, #1E40AF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Styles pour les formulaires */
+.form-input {
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 16px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input:focus {
+  border-color: #3B82F6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Styles pour les badges */
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  background: #F3F4F6;
+  color: #374151;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Styles pour les liens */
+a {
+  color: #3B82F6;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #1E40AF;
+}
+
+/* Styles pour les listes */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* Styles pour les icônes */
+.icon {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  vertical-align: middle;
 }
