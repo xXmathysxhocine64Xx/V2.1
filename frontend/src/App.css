@@ -22,12 +22,27 @@
   }
 }
 
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
 .animate-fade-in-up {
   animation: fade-in-up 0.6s ease-out;
 }
 
 .animate-float {
   animation: float 3s ease-in-out infinite;
+}
+
+.typing-cursor {
+  color: #00ff00;
+  animation: blink 1s infinite;
+  font-weight: bold;
 }
 
 .animation-delay-200 {
@@ -192,6 +207,7 @@ ul {
 
 .code-snippet code {
   color: #e5e7eb;
+  font-family: 'Fira Code', 'Monaco', 'Menlo', monospace;
 }
 
 /* Styles pour les éléments flottants */
@@ -205,9 +221,31 @@ ul {
   z-index: 1;
 }
 
+/* Styles pour l'animation de typewriter */
+.font-mono {
+  font-family: 'Fira Code', 'Monaco', 'Menlo', monospace;
+}
+
 /* Responsive pour les code snippets */
 @media (max-width: 1280px) {
   .code-snippet {
     display: none;
   }
+}
+
+/* Amélioration des animations */
+.animate-float:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.animate-float:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.animate-float:nth-child(3) {
+  animation-delay: 1s;
+}
+
+.animate-float:nth-child(4) {
+  animation-delay: 1.5s;
 }
