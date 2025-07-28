@@ -7,8 +7,9 @@ echo "========================================================"
 
 # Test du package existant
 echo "📦 Test du package de déploiement..."
-if [[ -f webcraft_*.tar.gz ]]; then
-    echo "✅ Package trouvé: $(ls webcraft_*.tar.gz)"
+PACKAGE=$(ls webcraft_*.tar.gz 2>/dev/null | head -1)
+if [[ -n "$PACKAGE" && -f "$PACKAGE" ]]; then
+    echo "✅ Package trouvé: $PACKAGE"
     
     # Extraction test
     tar -xzf webcraft_*.tar.gz
