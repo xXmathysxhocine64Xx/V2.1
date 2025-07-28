@@ -76,13 +76,13 @@ echo "✅ Structure de fichiers : CORRECTE"
 echo
 echo "📋 PROCÉDURE PRÊTE POUR DÉPLOIEMENT"
 echo "==================================="
-echo "Package: $(ls webcraft_*.tar.gz)"
-echo "Taille: $(du -h webcraft_*.tar.gz | cut -f1)"
+echo "Package: $PACKAGE"
+echo "Taille: $(du -h "$PACKAGE" | cut -f1)"
 echo
 echo "🔧 COMMANDES POUR DÉPLOYER:"
-echo "1. scp $(ls webcraft_*.tar.gz) root@VOTRE_IP:/tmp/"
+echo "1. scp $PACKAGE root@VOTRE_IP:/tmp/"
 echo "2. ssh root@VOTRE_IP"
-echo "3. cd /tmp && tar -xzf $(ls webcraft_*.tar.gz)"
+echo "3. cd /tmp && tar -xzf $PACKAGE"
 echo "4. cd deploy_package && ./install.sh"
 echo
 echo "🎉 PROCÉDURE DE DÉPLOIEMENT VALIDÉE ET PRÊTE !"
