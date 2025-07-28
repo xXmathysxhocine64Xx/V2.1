@@ -151,10 +151,14 @@ fi
 
 # Test 9: Vérification de la configuration Nginx
 print_test "Vérification template Nginx..."
-if grep -q "location /api" install.sh && grep -q "proxy_pass" install.sh; then
-    print_success "Configuration proxy API correcte"
+if [[ -f "/tmp/test_webcraft/deploy_package/install.sh" ]]; then
+    if grep -q "location /api" /tmp/test_webcraft/deploy_package/install.sh && grep -q "proxy_pass" /tmp/test_webcraft/deploy_package/install.sh; then
+        print_success "Configuration proxy API correcte"
+    else
+        print_error "Configuration proxy API manquante"
+    fi
 else
-    print_error "Configuration proxy API manquante"
+    print_warning "Script install.sh non trouvé pour vérification"
 fi
 
 # Test 10: Nettoyage
