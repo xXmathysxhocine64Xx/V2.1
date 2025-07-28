@@ -206,22 +206,42 @@ sudo systemctl status ssh
 # Installer UFW si non présent
 sudo apt install ufw -y
 
+# ⚠️ IMPORTANT: Tester sur système complet avec privilèges système
+# En environnement conteneurisé, certaines fonctions peuvent être limitées
+
+# Réinitialiser UFW
+sudo ufw --force reset
+
 # Politique par défaut
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
 
-# Autoriser le nouveau port SSH (remplacez 2222 par votre port)
+# Autoriser SSH (port standard et personnalisé)
+sudo ufw allow 22/tcp
 sudo ufw allow 2222/tcp
 
 # Autoriser les ports web si nécessaire
 sudo ufw allow 80/tcp
 sudo ufw allow 443/tcp
 
-# Activer UFW
+# Limiter les tentatives de connexion SSH
+sudo ufw limit 2222/tcp
+
+# Activer UFW (nécessite privilèges système complets)
 sudo ufw enable
 
 # Vérifier les règles
 sudo ufw status verbose
+```
+
+### 5.2 Alternative pour environnements limités
+```bash
+# Si UFW ne fonctionne pas, utiliser iptables directement
+# Bloquer toutes les connexions entrantes sauf SSH
+sudo iptables -A INPUT -p tcp --dport 2222 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+sudo iptables -A INPUT -j DROP
 ```
 
 ### 5.2 Configuration avancée de sécurité
