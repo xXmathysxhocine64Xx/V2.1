@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from './ui/button';
 import { ArrowRight, Code, Palette, Zap } from 'lucide-react';
 
 const HeroSection = () => {
+  const [typedTexts, setTypedTexts] = useState({});
+  const [currentLines, setCurrentLines] = useState({});
+
   const scrollToContact = () => {
     const element = document.getElementById('contact');
     if (element) {
@@ -19,23 +22,28 @@ const HeroSection = () => {
 
   const codeSnippets = [
     {
+      id: 'html',
       language: 'HTML',
       code: `<div class="hero-section">
   <h1>Site Web Moderne</h1>
   <p>Interface responsive</p>
 </div>`,
-      position: 'left-top'
+      position: 'left-top',
+      delay: 0
     },
     {
+      id: 'css',
       language: 'CSS',
       code: `.hero-section {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   padding: 60px 0;
   text-align: center;
 }`,
-      position: 'right-top'
+      position: 'right-top',
+      delay: 1000
     },
     {
+      id: 'javascript',
       language: 'JavaScript',
       code: `const createWebsite = () => {
   const site = new ModernWebsite();
@@ -43,9 +51,11 @@ const HeroSection = () => {
   site.optimizePerformance();
   return site;
 };`,
-      position: 'left-middle'
+      position: 'left-middle',
+      delay: 2000
     },
     {
+      id: 'react',
       language: 'React',
       code: `const WebsiteComponent = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -58,13 +68,49 @@ const HeroSection = () => {
     </div>
   );
 };`,
-      position: 'right-middle'
+      position: 'right-middle',
+      delay: 3000
     }
   ];
 
+  const typeWriter = (text, snippetId, delay = 0) => {
+    setTimeout(() => {
+      let i = 0;
+      const timer = setInterval(() => {
+        if (i < text.length) {
+          setTypedTexts(prev => ({
+            ...prev,
+            [snippetId]: text.substring(0, i + 1)
+          }));
+          i++;
+        } else {
+          clearInterval(timer);
+          // Supprimer le curseur après l'animation
+          setTimeout(() => {
+            setCurrentLines(prev => ({
+              ...prev,
+              [snippetId]: false
+            }));
+          }, 1000);
+        }
+      }, 30); // Vitesse de frappe (30ms par caractère)
+    }, delay);
+  };
+
+  useEffect(() => {
+    // Démarrer les animations de typewriter pour chaque snippet
+    codeSnippets.forEach(snippet => {
+      setCurrentLines(prev => ({
+        ...prev,
+        [snippet.id]: true
+      }));
+      typeWriter(snippet.code, snippet.id, snippet.delay);
+    });
+  }, []);
+
   return (
     <section id="accueil" className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 pt-16 relative overflow-hidden">
-      {/* Code snippets flottants */}
+      {/* Code snippets flottants avec animation typewriter */}
       <div className="absolute inset-0 pointer-events-none">
         {codeSnippets.map((snippet, index) => (
           <div
@@ -76,7 +122,7 @@ const HeroSection = () => {
               'right-12 top-80'
             } hidden xl:block`}
           >
-            <div className="bg-gray-900 rounded-lg p-4 shadow-2xl max-w-xs animate-float opacity-80 hover:opacity-100 transition-opacity duration-300">
+            <div className="bg-gray-900 rounded-lg p-4 shadow-2xl max-w-xs animate-float opacity-90 hover:opacity-100 transition-opacity duration-300">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-xs text-blue-400 font-semibold">{snippet.language}</span>
                 <div className="flex space-x-1">
@@ -85,8 +131,11 @@ const HeroSection = () => {
                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                 </div>
               </div>
-              <pre className="text-xs text-gray-300 overflow-hidden">
-                <code>{snippet.code}</code>
+              <pre className="text-xs text-gray-300 overflow-hidden whitespace-pre-wrap">
+                <code className="font-mono">
+                  {typedTexts[snippet.id] || ''}
+                  {currentLines[snippet.id] && <span className="typing-cursor">|</span>}
+                </code>
               </pre>
             </div>
           </div>
