@@ -54,7 +54,9 @@ print_status "Copie des fichiers de déploiement..."
 mkdir -p $DEPLOY_DIR/deploy
 cp deploy/install.sh $DEPLOY_DIR/
 cp deploy/README.md $DEPLOY_DIR/
+cp deploy/webcraft-service.sh $DEPLOY_DIR/deploy/
 chmod +x $DEPLOY_DIR/install.sh
+chmod +x $DEPLOY_DIR/deploy/webcraft-service.sh
 
 # Création du fichier de version
 cat > $DEPLOY_DIR/VERSION << EOF
