@@ -12,7 +12,7 @@ if [[ -n "$PACKAGE" && -f "$PACKAGE" ]]; then
     echo "✅ Package trouvé: $PACKAGE"
     
     # Extraction test
-    tar -xzf webcraft_*.tar.gz
+    tar -xzf "$PACKAGE"
     echo "✅ Package extractible"
     
     # Vérification structure
