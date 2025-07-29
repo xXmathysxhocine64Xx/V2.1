@@ -52,8 +52,8 @@ def test_virtual_environment_creation():
             print("❌ Virtual environment python interpreter not found")
             return False
         
-        # Activate and install dependencies
-        activate_cmd = f"source venv/bin/activate && pip install -r requirements.txt"
+        # Activate and install dependencies using bash
+        activate_cmd = f"bash -c 'source venv/bin/activate && pip install -r requirements.txt'"
         success, stdout, stderr = run_command(activate_cmd, cwd=backend_dir)
         if not success:
             print(f"❌ Dependencies installation FAILED: {stderr}")
