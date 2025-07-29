@@ -16,23 +16,35 @@ Fini les configurations complexes ! **3 étapes simples** installent tout :
 
 👉 **Suivez le guide complet** : [INSTALLATION_UBUNTU24.md](INSTALLATION_UBUNTU24.md)
 
-### Résumé Express (3 étapes)
+### ⚠️ **Important Ubuntu 24.04**
+**Python 3.12 impose l'utilisation d'environnements virtuels** (erreur "externally-managed-environment").  
+Nos guides incluent automatiquement cette contrainte avec `python3 -m venv venv`.
+
+### 🎯 Installation Automatique (Nouvelle)
+```bash
+# Script tout-en-un pour Ubuntu 24.04
+chmod +x install_ubuntu24.sh
+./install_ubuntu24.sh
+```
+
+### 📋 Installation Manuelle (3 étapes)
 
 ```bash
 # 1. Préparation système
 sudo apt update && sudo apt upgrade -y
 curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-sudo apt install -y nodejs python3 python3-pip nginx certbot python3-certbot-nginx git
+sudo apt install -y nodejs python3 python3-pip python3-venv nginx certbot python3-certbot-nginx git
 
-# 2. Installation WebCraft
+# 2. Installation WebCraft avec environnement virtuel
 cd /var/www/webcraft
-# Backend
-cd backend && pip3 install -r requirements.txt
-# Frontend  
+cd backend
+python3 -m venv venv          # Environnement virtuel obligatoire
+source venv/bin/activate      # Activation
+pip install -r requirements.txt
 cd ../frontend && npm install && npm run build
 
 # 3. Configuration et démarrage
-pm2 start "python3 server.py" --name "webcraft-backend"
+pm2 start "python server.py" --name "webcraft-backend" --interpreter ./venv/bin/python
 # Configuration Nginx + SSL (voir guide complet)
 ```
 
