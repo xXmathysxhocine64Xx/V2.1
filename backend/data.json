@@ -39,6 +39,16 @@
       "service": "Développement Web",
       "message": "Bonjour, je souhaiterais obtenir un devis pour la création d'un site web moderne pour notre entreprise.",
       "created_at": "2025-07-29T12:19:47.391453"
+    },
+    {
+      "id": "110a38f6-f97c-45b6-9fcf-520d333fead9",
+      "name": "Marie Dubois",
+      "email": "marie.dubois@entreprise.fr",
+      "company": "Tech Solutions SARL",
+      "phone": "+33 1 23 45 67 89",
+      "service": "Développement Web",
+      "message": "Bonjour, je souhaiterais obtenir un devis pour la création d'un site web moderne pour notre entreprise.",
+      "created_at": "2025-07-29T12:56:33.781631"
     }
   ]
 }
