@@ -1,10 +1,10 @@
 # 🚀 WebCraft - Site Web Moderne Ultra-Simple
 
-**Version 2.0 - Architecture Simplifiée**
+**Version 2.0 - Installation en 3 étapes simples**
 
-## 🎯 Déployez votre site en 3 minutes chrono !
+## 🎯 La simplicité avant tout !
 
-Fini les configurations complexes ! Une seule commande installe tout :
+Fini les configurations complexes ! **3 étapes simples** installent tout :
 - ✅ **Frontend React** moderne et responsive
 - ✅ **Backend FastAPI** ultra-performant  
 - ✅ **SSL gratuit** avec Let's Encrypt
@@ -12,47 +12,45 @@ Fini les configurations complexes ! Une seule commande installe tout :
 
 ---
 
-## 🚀 Installation Express
+## 🚀 Guide d'Installation
 
-### 1. Prérequis
-- Serveur **Ubuntu 24.04**
-- **Domaine** pointant vers votre serveur
-- **Accès root**
+👉 **Suivez le guide complet** : [INSTALLATION_UBUNTU24.md](INSTALLATION_UBUNTU24.md)
 
-### 2. Installation en UNE commande
+### Résumé Express (3 étapes)
+
 ```bash
-# Connexion au serveur
-ssh root@VOTRE-IP
+# 1. Préparation système
+sudo apt update && sudo apt upgrade -y
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt install -y nodejs python3 python3-pip nginx certbot python3-certbot-nginx git
 
-# Installation complète automatique
-chmod +x deploy_simple.sh
-./deploy_simple.sh
-```
+# 2. Installation WebCraft
+cd /var/www/webcraft
+# Backend
+cd backend && pip3 install -r requirements.txt
+# Frontend  
+cd ../frontend && npm install && npm run build
 
-### 3. Configuration (30 secondes)
+# 3. Configuration et démarrage
+pm2 start "python3 server.py" --name "webcraft-backend"
+# Configuration Nginx + SSL (voir guide complet)
 ```
-🌐 Votre domaine: monsite.com
-📧 Votre email: contact@monsite.com
-```
-
-### 4. Terminé ! 🎉
-Votre site est en ligne sur **https://monsite.com**
 
 ---
 
 ## 📋 Qu'est-ce qui a changé ?
 
 ### ✅ Nouveau (Ultra-Simple)
+- **Installation** : 3 étapes simples, 5 minutes
 - **Backend** : FastAPI avec stockage JSON (pas de DB complexe)
-- **Installation** : 1 seule commande, 3 minutes
-- **Configuration** : Automatique avec SSL
+- **Configuration** : Commandes manuelles claires
 - **Maintenance** : PM2 + Nginx (standards)
 
 ### ❌ Ancien (Trop Complexe)
 - ~~5+ guides différents (500+ lignes)~~
 - ~~Configuration SQLite/MongoDB~~
-- ~~Scripts multiples et complexes~~
-- ~~Étapes manuelles multiples~~
+- ~~Scripts automatiques complexes~~
+- ~~15+ étapes manuelles~~
 
 ---
 
@@ -85,9 +83,8 @@ Votre Site WebCraft
 
 **Super simple :**
 - **Pas de base de données** complexe (JSON local)
-- **Pas de Docker** (installation native)
-- **Pas de scripts** multiples (1 seul fichier)
-- **Pas de configuration** manuelle (tout automatique)
+- **Pas de scripts** automatiques (commandes manuelles claires)
+- **Pas de configuration** cachée (tout visible)
 
 ---
 
@@ -116,13 +113,27 @@ Votre Site WebCraft
 ## 📞 Support
 
 ### Problème d'installation ?
-1. Vérifiez que votre domaine pointe vers le serveur
+1. Suivez le guide détaillé : [INSTALLATION_UBUNTU24.md](INSTALLATION_UBUNTU24.md)
 2. Lancez `pm2 status` pour voir le backend
 3. Testez `curl https://votredomaine.com/api/`
 
-### Besoin d'aide ?
-- 📖 **Documentation complète** : [INSTALLATION_UBUNTU24.md](INSTALLATION_UBUNTU24.md)
-- 🔧 **Dépannage** : Voir les logs avec `pm2 logs webcraft-backend`
+### Test de l'installation
+```bash
+./test_webcraft.sh votredomaine.com
+```
+
+---
+
+## 🆚 Comparaison avec l'ancienne version
+
+| Aspect | Ancienne version | Nouvelle version |
+|--------|------------------|------------------|
+| **Étapes** | 🔴 15+ étapes | 🟢 3 étapes |
+| **Temps** | 🔴 30+ minutes | 🟢 5 minutes |
+| **Scripts** | 🔴 5+ scripts complexes | 🟢 Commandes simples |
+| **Base de données** | 🔴 SQLite + migrations | 🟢 JSON local |
+| **Documentation** | 🔴 500+ lignes | 🟢 Guide clair |
+| **Maintenance** | 🔴 Complexe | 🟢 PM2 standard |
 
 ---
 
@@ -133,8 +144,8 @@ Votre Site WebCraft
 - 🔧 **API** : https://votredomaine.com/api/
 - 📧 **Contact** : Formulaire intégré fonctionnel
 
-**Temps total : 3 minutes maximum ! ⏱️**
+**Installation = 5 minutes. Maintenance = Simple !** ⏱️
 
 ---
 
-*Plus jamais de configurations complexes - WebCraft 2.0 = Ultra-Simple !* 🚀
+*WebCraft 2.0 - L'art de la simplicité* 🚀
