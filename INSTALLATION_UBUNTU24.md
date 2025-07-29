@@ -195,12 +195,14 @@ sudo ufw enable
 # Vérifier les logs
 pm2 logs webcraft-backend
 
-# Vérifier les dépendances
+# Vérifier l'environnement virtuel et les dépendances
 cd /var/www/webcraft/backend
-pip3 install -r requirements.txt
+source venv/bin/activate
+pip install -r requirements.txt
 
-# Redémarrer
-pm2 restart webcraft-backend
+# Redémarrer avec l'environnement virtuel
+pm2 delete webcraft-backend
+pm2 start "python server.py" --name "webcraft-backend" --interpreter ./venv/bin/python
 ```
 
 ### Erreur 502 Bad Gateway
