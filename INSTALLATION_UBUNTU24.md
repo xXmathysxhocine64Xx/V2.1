@@ -145,9 +145,10 @@ sudo nginx -t
 cd /var/www/webcraft
 git pull  # Ou upload des nouveaux fichiers
 
-# Backend
+# Backend (avec environnement virtuel)
 cd backend
-pip3 install -r requirements.txt
+source venv/bin/activate
+pip install -r requirements.txt
 pm2 restart webcraft-backend
 
 # Frontend
