@@ -133,7 +133,7 @@ else
     echo "    ⚠️  API ne répond pas encore (peut prendre quelques secondes)"
 fi
 
-# Nginx
+echo "  🔹 Configuration Nginx..."
 cat > /etc/nginx/sites-available/webcraft << EOF
 server {
     listen 80;
@@ -154,22 +154,37 @@ server {
     }
 }
 EOF
+check_error "création configuration Nginx"
 
 ln -sf /etc/nginx/sites-available/webcraft /etc/nginx/sites-enabled/
 rm -f /etc/nginx/sites-enabled/default
-nginx -t && systemctl reload nginx
 
-# SSL
-certbot --nginx -d $DOMAIN --non-interactive --agree-tos --email admin@$DOMAIN > /dev/null 2>&1
+echo "  🔹 Test configuration Nginx..."
+nginx -t
+check_error "validation configuration Nginx"
+
+systemctl reload nginx
+check_error "rechargement Nginx"
+
+echo "    ✅ Nginx configuré pour $DOMAIN"
+
+echo "  🔹 Configuration SSL avec Let's Encrypt..."
+if certbot --nginx -d $DOMAIN --non-interactive --agree-tos --email admin@$DOMAIN; then
+    echo "    ✅ SSL configuré avec succès"
+else
+    echo "    ⚠️  SSL non configuré (vérifiez que le domaine pointe vers ce serveur)"
+fi
 
 # Permissions
+echo "  🔹 Configuration des permissions..."
 chown -R www-data:www-data $INSTALL_DIR
+check_error "configuration permissions"
 
 echo ""
 echo "🎉 INSTALLATION TERMINÉE !"
 echo "=========================="
-echo "✅ Site web: https://$DOMAIN"
-echo "✅ API: https://$DOMAIN/api/"
+echo "✅ Site web: https://$DOMAIN (ou http://$DOMAIN si SSL échoué)"
+echo "✅ API: https://$DOMAIN/api/ (ou http://$DOMAIN/api/)"
 echo ""
 echo "🔧 Commandes utiles:"
 echo "  pm2 status              # Voir le backend"
@@ -177,3 +192,8 @@ echo "  pm2 logs webcraft-backend  # Logs"
 echo "  systemctl status nginx  # Voir nginx"
 echo ""
 echo "🚀 WebCraft est prêt avec Ubuntu 24.04 !"
+echo ""
+echo "📊 Vérifications finales:"
+echo "  Backend status: $(pm2 status | grep webcraft-backend | awk '{print $10}')"
+echo "  Nginx status: $(systemctl is-active nginx)"
+echo "  Installation directory: $INSTALL_DIR"
