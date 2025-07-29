@@ -15,22 +15,32 @@
 ```bash
 sudo apt update && sudo apt upgrade -y
 curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-sudo apt install -y nodejs python3 python3-pip nginx certbot python3-certbot-nginx git
+sudo apt install -y nodejs python3 python3-pip python3-venv nginx certbot python3-certbot-nginx git
 ```
 
 #### Étape 2 : WebCraft
 ```bash
 # Copiez vos fichiers dans /var/www/webcraft
 cd /var/www/webcraft
-cd backend && pip3 install -r requirements.txt
+
+# Backend avec environnement virtuel (requis Ubuntu 24.04)
+cd backend
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+
+# Frontend
 cd ../frontend && npm install && npm run build
 ```
 
 #### Étape 3 : Configuration
 ```bash
 sudo npm install -g pm2
+
+# Démarrage backend avec environnement virtuel
 cd /var/www/webcraft/backend
-pm2 start "python3 server.py" --name "webcraft-backend"
+source venv/bin/activate
+pm2 start "python server.py" --name "webcraft-backend" --interpreter ./venv/bin/python
 pm2 startup && pm2 save
 
 # Configuration Nginx (remplacez your-domain.com)
