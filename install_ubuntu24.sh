@@ -66,19 +66,36 @@ echo "    PM2: $(pm2 --version)"
 
 # 3. Installation WebCraft
 echo "⚙️  3/4 - Installation WebCraft..."
+echo "  🔹 Création du répertoire d'installation..."
 mkdir -p $INSTALL_DIR
-cp -r /app/* $INSTALL_DIR/
+check_error "création répertoire $INSTALL_DIR"
 
-# Backend avec environnement virtuel
+echo "  🔹 Copie des fichiers..."
+cp -r /app/* $INSTALL_DIR/
+check_error "copie des fichiers"
+
+echo "  🔹 Installation Backend Python avec environnement virtuel..."
 cd $INSTALL_DIR/backend
 python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt > /dev/null 2>&1
+check_error "création environnement virtuel"
 
-# Frontend
+source venv/bin/activate
+check_error "activation environnement virtuel"
+
+pip install -r requirements.txt
+check_error "installation dépendances Python"
+
+echo "    ✅ Environnement virtuel Python créé: $INSTALL_DIR/backend/venv"
+
+echo "  🔹 Installation Frontend React..."
 cd $INSTALL_DIR/frontend
-npm install > /dev/null 2>&1
-npm run build > /dev/null 2>&1
+npm install
+check_error "installation dépendances Node.js"
+
+npm run build
+check_error "build du frontend React"
+
+echo "    ✅ Frontend React compilé: $INSTALL_DIR/frontend/build"
 
 # 4. Configuration des services
 echo "🌐 4/4 - Configuration des services..."
