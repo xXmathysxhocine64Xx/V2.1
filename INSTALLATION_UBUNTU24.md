@@ -23,7 +23,7 @@ Cette procédure remplace complètement l'ancienne installation complexe. **3 co
 # Mise à jour et installation des outils de base
 sudo apt update && sudo apt upgrade -y
 curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-sudo apt install -y nodejs python3 python3-pip nginx certbot python3-certbot-nginx git
+sudo apt install -y nodejs python3 python3-pip python3-venv nginx certbot python3-certbot-nginx git
 
 # Vérification
 node --version  # Doit afficher v18.x.x ou plus
