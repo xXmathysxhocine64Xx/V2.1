@@ -2,8 +2,18 @@
 # WebCraft - Script d'Installation Simplifié pour Ubuntu 24.04
 # Gère automatiquement l'environnement virtuel Python
 
+set -e  # Arrêter le script en cas d'erreur
+
 echo "🚀 Installation WebCraft - Ubuntu 24.04 Compatible"
 echo "=================================================="
+
+# Fonction pour vérifier les erreurs
+check_error() {
+    if [ $? -ne 0 ]; then
+        echo "❌ Erreur lors de: $1"
+        exit 1
+    fi
+}
 
 # Vérification Ubuntu 24.04
 if ! grep -q "24.04" /etc/os-release; then
@@ -33,12 +43,26 @@ echo ""
 # 1. Mise à jour système
 echo "📦 1/4 - Mise à jour du système..."
 apt update -qq && apt upgrade -y -qq
+check_error "mise à jour système"
 
 # 2. Installation des dépendances
 echo "🔧 2/4 - Installation des outils..."
-curl -fsSL https://deb.nodesource.com/setup_18.x | bash - > /dev/null 2>&1
-apt install -y nodejs python3 python3-pip python3-venv nginx certbot python3-certbot-nginx git > /dev/null 2>&1
-npm install -g pm2 > /dev/null 2>&1
+echo "  🔹 Installation Node.js..."
+curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
+check_error "ajout repository Node.js"
+
+echo "  🔹 Installation des packages système..."
+apt install -y nodejs python3 python3-pip python3-venv nginx certbot python3-certbot-nginx git
+check_error "installation packages système"
+
+echo "  🔹 Installation PM2..."
+npm install -g pm2
+check_error "installation PM2"
+
+echo "  🔹 Vérification des versions..."
+echo "    Node.js: $(node --version)"
+echo "    Python3: $(python3 --version)"
+echo "    PM2: $(pm2 --version)"
 
 # 3. Installation WebCraft
 echo "⚙️  3/4 - Installation WebCraft..."
