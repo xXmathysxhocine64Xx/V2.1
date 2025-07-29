@@ -1,168 +1,139 @@
-from fastapi import FastAPI, APIRouter, HTTPException
+#!/usr/bin/env python3
+"""
+WebCraft - Backend Ultra-Simple
+Site web moderne avec API minimale
+"""
+
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from sqlalchemy import create_engine, Column, Integer, String, DateTime, Text
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker, Session
-from dotenv import load_dotenv
-from pathlib import Path
-from pydantic import BaseModel, Field
-from typing import List
+from pydantic import BaseModel, EmailStr
+from typing import List, Optional
+import json
 import os
-import logging
-import uuid
 from datetime import datetime
-from fastapi import Depends
+import uuid
 
-ROOT_DIR = Path(__file__).parent
-load_dotenv(ROOT_DIR / '.env')
+# Configuration simple
+app = FastAPI(title="WebCraft API", version="2.0.0")
 
-# SQLite Database setup
-DATABASE_URL = os.environ.get('DATABASE_URL', 'sqlite:///./webcraft.db')
-engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-Base = declarative_base()
+# CORS pour le frontend
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-# Database Models
-class ContactRequest(Base):
-    __tablename__ = "contact_requests"
-    
-    id = Column(Integer, primary_key=True, index=True)
-    name = Column(String, nullable=False)
-    email = Column(String, nullable=False)
-    company = Column(String, nullable=True)
-    phone = Column(String, nullable=True)
-    service = Column(String, nullable=True)
-    message = Column(Text, nullable=False)
-    created_at = Column(DateTime, default=datetime.utcnow)
+# Fichier de stockage simple (JSON)
+DATA_FILE = os.path.join(os.path.dirname(__file__), "data.json")
 
-class StatusCheck(Base):
-    __tablename__ = "status_checks"
-    
-    id = Column(Integer, primary_key=True, index=True)
-    client_name = Column(String, nullable=False)
-    timestamp = Column(DateTime, default=datetime.utcnow)
-
-# Create tables
-Base.metadata.create_all(bind=engine)
-
-# Pydantic models
-class ContactRequestCreate(BaseModel):
+# Modèles Pydantic
+class ContactMessage(BaseModel):
     name: str
-    email: str
-    company: str = ""
-    phone: str = ""
-    service: str = ""
+    email: EmailStr
+    company: Optional[str] = ""
+    phone: Optional[str] = ""
+    service: Optional[str] = ""
     message: str
 
-class ContactRequestResponse(BaseModel):
-    id: int
+class ContactResponse(BaseModel):
+    id: str
     name: str
     email: str
     company: str
     phone: str
     service: str
     message: str
-    created_at: datetime
+    created_at: str
 
-    class Config:
-        from_attributes = True
-
-class StatusCheckCreate(BaseModel):
-    client_name: str
-
-class StatusCheckResponse(BaseModel):
-    id: int
-    client_name: str
-    timestamp: datetime
-
-    class Config:
-        from_attributes = True
-
-# Dependency to get database session
-def get_db():
-    db = SessionLocal()
+# Utilitaires de stockage
+def load_data():
+    """Charge les données depuis le fichier JSON"""
+    if not os.path.exists(DATA_FILE):
+        return {"contacts": []}
     try:
-        yield db
-    finally:
-        db.close()
+        with open(DATA_FILE, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except:
+        return {"contacts": []}
 
-# Create the main app
-app = FastAPI(title="WebCraft API", version="1.0.0")
+def save_data(data):
+    """Sauvegarde les données dans le fichier JSON"""
+    os.makedirs(os.path.dirname(DATA_FILE), exist_ok=True)
+    with open(DATA_FILE, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
 
-# Create a router with the /api prefix
-api_router = APIRouter(prefix="/api")
-
-# Add routes
-@api_router.get("/")
+# Routes API
+@app.get("/api/")
 async def root():
-    return {"message": "WebCraft API is running"}
+    """Route de base pour vérifier que l'API fonctionne"""
+    return {
+        "message": "WebCraft API v2.0 - Ultra Simple",
+        "status": "running",
+        "endpoints": ["/api/contact", "/api/contacts"]
+    }
 
-@api_router.post("/contact", response_model=ContactRequestResponse)
-async def create_contact_request(contact: ContactRequestCreate, db: Session = Depends(get_db)):
+@app.post("/api/contact", response_model=ContactResponse)
+async def create_contact(contact: ContactMessage):
+    """Créer un nouveau message de contact"""
     try:
-        db_contact = ContactRequest(
-            name=contact.name,
-            email=contact.email,
-            company=contact.company,
-            phone=contact.phone,
-            service=contact.service,
-            message=contact.message
-        )
-        db.add(db_contact)
-        db.commit()
-        db.refresh(db_contact)
-        return db_contact
+        # Charger les données existantes
+        data = load_data()
+        
+        # Créer le nouveau contact
+        new_contact = {
+            "id": str(uuid.uuid4()),
+            "name": contact.name,
+            "email": contact.email,
+            "company": contact.company or "",
+            "phone": contact.phone or "",
+            "service": contact.service or "",
+            "message": contact.message,
+            "created_at": datetime.now().isoformat()
+        }
+        
+        # Ajouter aux données
+        data["contacts"].append(new_contact)
+        
+        # Sauvegarder
+        save_data(data)
+        
+        return new_contact
+        
     except Exception as e:
-        db.rollback()
-        raise HTTPException(status_code=400, detail=str(e))
+        raise HTTPException(status_code=500, detail=f"Erreur lors de la sauvegarde: {str(e)}")
 
-@api_router.get("/contact", response_model=List[ContactRequestResponse])
-async def get_contact_requests(db: Session = Depends(get_db)):
+@app.get("/api/contacts", response_model=List[ContactResponse])
+async def get_contacts():
+    """Récupérer tous les messages de contact"""
     try:
-        contacts = db.query(ContactRequest).order_by(ContactRequest.created_at.desc()).all()
+        data = load_data()
+        # Trier par date (plus récent d'abord)
+        contacts = sorted(data["contacts"], key=lambda x: x["created_at"], reverse=True)
         return contacts
     except Exception as e:
-        raise HTTPException(status_code=400, detail=str(e))
+        raise HTTPException(status_code=500, detail=f"Erreur lors de la récupération: {str(e)}")
 
-@api_router.post("/status", response_model=StatusCheckResponse)
-async def create_status_check(status: StatusCheckCreate, db: Session = Depends(get_db)):
+@app.get("/api/health")
+async def health_check():
+    """Vérification de santé du service"""
     try:
-        db_status = StatusCheck(client_name=status.client_name)
-        db.add(db_status)
-        db.commit()
-        db.refresh(db_status)
-        return db_status
+        # Vérifier l'accès aux données
+        data = load_data()
+        return {
+            "status": "healthy",
+            "timestamp": datetime.now().isoformat(),
+            "contacts_count": len(data.get("contacts", []))
+        }
     except Exception as e:
-        db.rollback()
-        raise HTTPException(status_code=400, detail=str(e))
+        return {
+            "status": "unhealthy",
+            "error": str(e),
+            "timestamp": datetime.now().isoformat()
+        }
 
-@api_router.get("/status", response_model=List[StatusCheckResponse])
-async def get_status_checks(db: Session = Depends(get_db)):
-    try:
-        status_checks = db.query(StatusCheck).order_by(StatusCheck.timestamp.desc()).all()
-        return status_checks
-    except Exception as e:
-        raise HTTPException(status_code=400, detail=str(e))
-
-# Include the router in the main app
-app.include_router(api_router)
-
-# Add CORS middleware
-app.add_middleware(
-    CORSMiddleware,
-    allow_credentials=True,
-    allow_origins=["*"],
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger(__name__)
-
+# Point d'entrée pour uvicorn
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8001)
