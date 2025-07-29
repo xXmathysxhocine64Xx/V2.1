@@ -57,9 +57,10 @@ npm run build
 # Installation de PM2 pour la gestion des processus
 sudo npm install -g pm2
 
-# Démarrage du backend WebCraft
+# Démarrage du backend WebCraft (avec environnement virtuel)
 cd /var/www/webcraft/backend
-pm2 start "python3 server.py" --name "webcraft-backend"
+source venv/bin/activate
+pm2 start "python server.py" --name "webcraft-backend" --interpreter ./venv/bin/python
 pm2 startup
 pm2 save
 
