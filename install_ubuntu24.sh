@@ -100,12 +100,38 @@ echo "    ✅ Frontend React compilé: $INSTALL_DIR/frontend/build"
 # 4. Configuration des services
 echo "🌐 4/4 - Configuration des services..."
 
-# PM2 Backend
+echo "  🔹 Démarrage du backend WebCraft avec PM2..."
 cd $INSTALL_DIR/backend
-source venv/bin/activate
-pm2 start "python server.py" --name "webcraft-backend" --interpreter ./venv/bin/python > /dev/null 2>&1
-pm2 startup > /dev/null 2>&1
-pm2 save > /dev/null 2>&1
+
+# Arrêter le service s'il existe déjà
+pm2 delete webcraft-backend 2>/dev/null || true
+
+# Démarrer avec le bon chemin absolu vers l'interpréteur Python
+pm2 start server.py --name "webcraft-backend" --interpreter $INSTALL_DIR/backend/venv/bin/python
+check_error "démarrage PM2 backend"
+
+pm2 startup
+pm2 save
+check_error "configuration PM2 auto-start"
+
+echo "  🔹 Vérification du backend..."
+sleep 3
+if ! pm2 status | grep -q "webcraft-backend.*online"; then
+    echo "❌ Erreur: Le backend n'a pas démarré correctement"
+    echo "Logs PM2:"
+    pm2 logs webcraft-backend --lines 10
+    exit 1
+fi
+
+echo "    ✅ Backend WebCraft démarré sur port 8001"
+
+echo "  🔹 Test de l'API..."
+sleep 2
+if curl -f http://localhost:8001/api/ > /dev/null 2>&1; then
+    echo "    ✅ API répond correctement"
+else
+    echo "    ⚠️  API ne répond pas encore (peut prendre quelques secondes)"
+fi
 
 # Nginx
 cat > /etc/nginx/sites-available/webcraft << EOF
