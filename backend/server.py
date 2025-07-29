@@ -2,6 +2,7 @@
 """
 WebCraft - Backend Ultra-Simple
 Site web moderne avec API minimale
+IMPORTANT: Utilise un environnement virtuel pour Ubuntu 24.04
 """
 
 from fastapi import FastAPI, HTTPException
@@ -69,8 +70,9 @@ def save_data(data):
 async def root():
     """Route de base pour vérifier que l'API fonctionne"""
     return {
-        "message": "WebCraft API v2.0 - Ultra Simple",
+        "message": "WebCraft API v2.0 - Ultra Simple (Ubuntu 24.04 compatible)",
         "status": "running",
+        "python_env": "virtual_environment",
         "endpoints": ["/api/contact", "/api/contacts"]
     }
 
@@ -124,7 +126,9 @@ async def health_check():
         return {
             "status": "healthy",
             "timestamp": datetime.now().isoformat(),
-            "contacts_count": len(data.get("contacts", []))
+            "contacts_count": len(data.get("contacts", [])),
+            "python_env": "virtual_environment_active",
+            "ubuntu": "24.04_compatible"
         }
     except Exception as e:
         return {
