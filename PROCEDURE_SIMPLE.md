@@ -1,92 +1,74 @@
-# 🚀 WebCraft - Procédure Simplifiée
+# 🚀 WebCraft - Installation Express
 
-## ⚡ Installation Ultra-Rapide (3 min)
+## ⚡ 3 Étapes - 5 Minutes - C'est Prêt !
 
-### 📋 Ce dont vous avez besoin :
-- Serveur Ubuntu 24.04
-- Nom de domaine (ex: monsite.com)
-- Email pour SSL
-
-### 🎯 Installation en 3 étapes :
-
-#### 1. Connexion au serveur
-```bash
-ssh root@VOTRE-IP-SERVEUR
-```
-
-#### 2. Installation automatique
-```bash
-# Télécharger les fichiers WebCraft sur votre serveur
-# Puis lancer :
-./deploy_simple.sh
-```
-
-#### 3. Configuration (questions simples)
-```
-🌐 Votre domaine: monsite.com
-📧 Votre email: contact@monsite.com
-```
-
-### ✅ C'est terminé !
-Votre site est en ligne sur **https://monsite.com**
+### 📋 Prérequis
+- Ubuntu Server 24.04
+- Domaine pointant vers votre IP
+- Accès sudo
 
 ---
 
-## 🔧 Gestion Super Simple
+### 🛠️ Installation
 
-### Voir si tout fonctionne
+#### Étape 1 : Système
 ```bash
-pm2 status                    # Backend actif ?
-systemctl status nginx        # Serveur web actif ?
+sudo apt update && sudo apt upgrade -y
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt install -y nodejs python3 python3-pip nginx certbot python3-certbot-nginx git
 ```
 
-### En cas de problème
+#### Étape 2 : WebCraft
 ```bash
-pm2 logs webcraft-backend     # Voir les erreurs
-pm2 restart webcraft-backend  # Redémarrer
+# Copiez vos fichiers dans /var/www/webcraft
+cd /var/www/webcraft
+cd backend && pip3 install -r requirements.txt
+cd ../frontend && npm install && npm run build
 ```
 
-### Tester l'installation
+#### Étape 3 : Configuration
 ```bash
-./test_webcraft.sh monsite.com
+sudo npm install -g pm2
+cd /var/www/webcraft/backend
+pm2 start "python3 server.py" --name "webcraft-backend"
+pm2 startup && pm2 save
+
+# Configuration Nginx (remplacez your-domain.com)
+sudo tee /etc/nginx/sites-available/webcraft > /dev/null << 'EOF' 
+server {
+    listen 80;
+    server_name your-domain.com;
+    location / {
+        root /var/www/webcraft/frontend/build;
+        index index.html;
+        try_files $uri $uri/ /index.html;
+    }
+    location /api {
+        proxy_pass http://localhost:8001;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+EOF
+
+sudo ln -s /etc/nginx/sites-available/webcraft /etc/nginx/sites-enabled/
+sudo rm -f /etc/nginx/sites-enabled/default
+sudo nginx -t && sudo systemctl restart nginx
+sudo certbot --nginx -d your-domain.com
 ```
 
 ---
 
-## 🏗️ Architecture Ultra-Simple
+### ✅ Terminé !
+**Site : https://your-domain.com**
 
+### 🔧 Gestion
+```bash
+pm2 status                    # Backend
+pm2 logs webcraft-backend     # Logs
+systemctl status nginx        # Frontend
 ```
-Ubuntu 24.04
-├── Site Web (React) → Port 80/443 (Nginx)
-├── API (Python) → Port 8001 (PM2)  
-├── Données → Fichier JSON local
-└── SSL → Let's Encrypt gratuit
-```
 
-**Fini les complications :**
-- ❌ Plus de base de données complexe
-- ❌ Plus de 20 étapes manuelles  
-- ❌ Plus de 500 lignes de documentation
-- ❌ Plus de scripts multiples
-
-**Maintenant c'est simple :**
-- ✅ 1 seule commande d'installation
-- ✅ 3 minutes chrono
-- ✅ SSL automatique
-- ✅ Tout fonctionne immédiatement
-
----
-
-## 🎉 Résultat
-
-**Votre site professionnel WebCraft :**
-- 🌐 **Site** : https://monsite.com
-- 📧 **Contact** : Formulaire intégré
-- 🔒 **Sécurisé** : HTTPS + Firewall
-- 📱 **Responsive** : Mobile + Desktop
-
-**Installation = 3 minutes. Point final !** ⏱️
-
----
-
-*WebCraft 2.0 - L'art de la simplicité* 🎨
+**Installation = 5 minutes !** ⏱️
