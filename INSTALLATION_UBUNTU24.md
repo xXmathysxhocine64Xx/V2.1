@@ -39,9 +39,11 @@ git clone https://github.com/votre-repo/webcraft.git /var/www/webcraft
 
 cd /var/www/webcraft
 
-# Installation Backend Python
+# Installation Backend Python (avec environnement virtuel pour Ubuntu 24.04)
 cd backend
-pip3 install -r requirements.txt
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
 
 # Installation Frontend React
 cd ../frontend
