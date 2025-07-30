@@ -147,45 +147,34 @@ const HeroSection = () => {
 
   return (
     <section id="accueil" className="min-h-screen relative overflow-hidden">
-      {/* Background animé avec lignes de code */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
-        {/* Lignes de code en arrière-plan */}
-        <div className="absolute inset-0 opacity-20">
-          {backgroundCodeLines.map((line, index) => (
-            <div
-              key={index}
-              className={`absolute text-xs text-green-400 font-mono whitespace-nowrap animate-slide-right`}
-              style={{
-                top: `${(index * 30) % 100}%`,
-                left: '-100%',
-                animationDelay: `${index * 0.8}s`,
-                animationDuration: '28s'
-              }}
-            >
-              {line}
-            </div>
-          ))}
+      {/* Nouveau Background moderne avec effet de verre */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
+        {/* Formes géométriques animées */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-20 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
+          <div className="absolute top-40 right-20 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse" style={{animationDelay: '2s'}}></div>
+          <div className="absolute -bottom-8 left-40 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse" style={{animationDelay: '4s'}}></div>
         </div>
         
-        {/* Particules flottantes */}
+        {/* Grille discrète */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="h-full w-full bg-grid-pattern"></div>
+        </div>
+        
+        {/* Points flottants simplifiés */}
         <div className="absolute inset-0">
-          {Array.from({ length: 50 }).map((_, i) => (
+          {Array.from({ length: 20 }).map((_, i) => (
             <div
               key={i}
-              className="absolute w-1 h-1 bg-blue-400 rounded-full animate-float-particle"
+              className="absolute w-2 h-2 bg-white rounded-full animate-pulse opacity-30"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 10}s`,
-                animationDuration: `${7 + Math.random() * 8}s`
+                animationDuration: `${3 + Math.random() * 4}s`,
+                animationDelay: `${Math.random() * 2}s`
               }}
             />
           ))}
-        </div>
-
-        {/* Grille technologique */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="h-full w-full bg-grid-pattern"></div>
         </div>
       </div>
 
