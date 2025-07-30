@@ -340,6 +340,17 @@ webcraft_animations:
           agent: "testing"
           comment: "🎊 TEST COMPLET DES NOUVELLES ANIMATIONS RÉUSSI - Vérification exhaustive de toutes les animations WebCraft à http://localhost:3000/: KEYFRAMES CSS: 8/8 trouvés (pulse-glow, bounce-subtle, scale-in, fade-in-up, float, slide-right, float-particle, gradient-x). ÉLÉMENTS ANIMÉS: 136 total (animate-pulse-glow: 6, animate-bounce-subtle: 24, animate-scale-in: 9, animate-pulse-glow-bounce: 3, animate-fade-in-up: 3, animate-float: 4, animate-slide-right: 36, animate-float-particle: 50, animate-gradient-x: 1). EFFETS VISUELS CONFIRMÉS: Icônes hero avec lueur bleue pulsante + rebond (-0.736px Y), cartes services avec scaling et délais échelonnés (0s, 0.1s, 0.2s...), points de listes avec rebond subtil, animations existantes préservées (particules flottantes, lignes de code défilantes, typewriter effect). Toutes les animations créent un effet visuel harmonieux et professionnel."
 
+  - task: "Correction vitesse animations particules"
+    implemented: false
+    working: false
+    file: "frontend/src/App.css, frontend/src/components/HeroSection.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+        - working: false
+          agent: "testing"
+          comment: "❌ ANIMATIONS PARTICULES NON CORRIGÉES - Test détaillé à http://localhost:3000/ révèle que les corrections demandées ne sont PAS implémentées: 1) PARTICULES FLOTTANTES: Durée encore 3-7s (ex: 3.90199s, 6.21878s) au lieu de 6-14s demandés, mouvement encore -20px au lieu de -10px max, pas d'opacité variable. 2) LIGNES CODE ARRIÈRE-PLAN: Durée encore 15s au lieu de 25s, délai encore 0.3s au lieu de 0.5s, pas d'effet fade in/out. 3) KEYFRAMES ACTUELS: float-particle translateY(-20px), slide-right 15s linear. Les animations fonctionnent mais ne respectent pas les spécifications de vitesse plus lente et subtile demandées."
 
 metadata:
   created_by: "main_agent"
