@@ -178,36 +178,23 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Code snippets flottants avec animation typewriter */}
+      {/* Éléments décoratifs modernes */}
       <div className="absolute inset-0 pointer-events-none">
-        {codeSnippets.map((snippet, index) => (
-          <div
-            key={index}
-            className={`absolute ${
-              snippet.position === 'left-top' ? 'left-8 top-32' :
-              snippet.position === 'right-top' ? 'right-8 top-48' :
-              snippet.position === 'left-middle' ? 'left-12 top-96' :
-              'right-12 top-80'
-            } hidden xl:block`}
-          >
-            <div className="bg-gray-900/90 backdrop-blur-sm rounded-lg p-4 shadow-2xl max-w-xs animate-float opacity-90 hover:opacity-100 transition-opacity duration-300 border border-blue-500/20">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-xs text-blue-400 font-semibold">{snippet.language}</span>
-                <div className="flex space-x-1">
-                  <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                  <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                </div>
-              </div>
-              <pre className="text-xs text-gray-300 overflow-hidden whitespace-pre-wrap">
-                <code className="font-mono">
-                  {typedTexts[snippet.id] || ''}
-                  {currentLines[snippet.id] && <span className="typing-cursor">|</span>}
-                </code>
-              </pre>
-            </div>
-          </div>
-        ))}
+        {/* Icônes technologiques flottantes */}
+        <div className="absolute top-32 left-8 bg-white/10 backdrop-blur-sm rounded-lg p-4 animate-float opacity-80">
+          <Code className="h-8 w-8 text-blue-400" />
+        </div>
+        <div className="absolute top-48 right-12 bg-white/10 backdrop-blur-sm rounded-lg p-4 animate-float opacity-80" style={{animationDelay: '1s'}}>
+          <Palette className="h-8 w-8 text-purple-400" />
+        </div>
+        <div className="absolute top-80 left-16 bg-white/10 backdrop-blur-sm rounded-lg p-4 animate-float opacity-80" style={{animationDelay: '2s'}}>
+          <Zap className="h-8 w-8 text-pink-400" />
+        </div>
+        
+        {/* Badge technologique */}
+        <div className="absolute top-24 right-32 bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-sm rounded-full px-6 py-2 border border-white/20 animate-pulse">
+          <span className="text-white text-sm font-semibold">Next.js • React • TailwindCSS</span>
+        </div>
       </div>
 
       {/* Contenu principal avec effet hero style GameBoost */}
