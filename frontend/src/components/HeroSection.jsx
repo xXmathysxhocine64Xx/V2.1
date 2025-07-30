@@ -197,39 +197,54 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Contenu principal avec effet hero style GameBoost */}
+      {/* Contenu principal moderne */}
       <div className="relative z-10 pt-32 pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <div className="animate-fade-in-up">
-              <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-                <span className="text-white">Créons ensemble votre</span>
-                <br />
-                <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent animate-gradient-x">
-                  site web parfait
+            {/* Badge d'introduction */}
+            <div className="animate-fade-in-up mb-8">
+              <span className="inline-block bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-2 text-sm text-white/90 font-medium">
+                ✨ Votre partenaire digital de confiance
+              </span>
+            </div>
+
+            {/* Titre principal redessiné */}
+            <div className="animate-fade-in-up animation-delay-200">
+              <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-tight">
+                <span className="block text-white mb-2">Créons</span>
+                <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                  l'excellence
                 </span>
+                <span className="block text-white">ensemble</span>
               </h1>
-              <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-                Nous concevons et développons des sites web modernes, performants et sur mesure pour propulser votre entreprise vers le succès digital.
+            </div>
+
+            {/* Sous-titre simplifié */}
+            <div className="animate-fade-in-up animation-delay-400">
+              <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed font-light">
+                Développement de sites web modernes, performants et sur mesure pour <br />
+                <span className="text-blue-400 font-medium">propulser votre entreprise vers le succès digital</span>
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-fade-in-up animation-delay-200">
+            {/* Boutons d'action redessinés */}
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20 animate-fade-in-up animation-delay-400">
               <Button 
                 onClick={scrollToContact}
                 size="lg"
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border-0 rounded-full"
+                className="group bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-10 py-5 text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border-0 rounded-2xl font-semibold"
               >
-                Demander un devis
-                <ArrowRight className="ml-2 h-5 w-5" />
+                Démarrer mon projet
+                <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button 
                 onClick={scrollToPortfolio}
                 variant="outline"
                 size="lg"
-                className="border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white px-8 py-4 text-lg transition-all duration-300 transform hover:scale-105 backdrop-blur-sm rounded-full"
+                className="group border-2 border-white/30 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 hover:border-white/50 px-10 py-5 text-lg transition-all duration-300 transform hover:scale-105 rounded-2xl font-semibold"
               >
-                Voir nos réalisations
+                Voir nos créations
+                <Code className="ml-3 h-5 w-5 group-hover:rotate-12 transition-transform" />
               </Button>
             </div>
 
