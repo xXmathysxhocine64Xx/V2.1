@@ -147,34 +147,20 @@ const HeroSection = () => {
 
   return (
     <section id="accueil" className="min-h-screen relative overflow-hidden">
-      {/* Nouveau Background moderne avec effet de verre */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
-        {/* Formes géométriques animées */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-20 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
-          <div className="absolute top-40 right-20 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse" style={{animationDelay: '2s'}}></div>
-          <div className="absolute -bottom-8 left-40 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse" style={{animationDelay: '4s'}}></div>
+      {/* Background moderne avec mesh gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+        {/* Mesh gradient moderne */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-600/20 via-purple-600/20 to-pink-600/20"></div>
+          <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-bl from-cyan-500/30 to-transparent rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-purple-500/30 to-transparent rounded-full blur-3xl"></div>
         </div>
         
-        {/* Grille discrète */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="h-full w-full bg-grid-pattern"></div>
-        </div>
-        
-        {/* Points flottants simplifiés */}
-        <div className="absolute inset-0">
-          {Array.from({ length: 20 }).map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-2 h-2 bg-white rounded-full animate-pulse opacity-30"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDuration: `${3 + Math.random() * 4}s`,
-                animationDelay: `${Math.random() * 2}s`
-              }}
-            />
-          ))}
+        {/* Lignes décoratives statiques */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-20 left-10 w-64 h-px bg-gradient-to-r from-blue-500/50 to-transparent"></div>
+          <div className="absolute top-40 right-20 w-48 h-px bg-gradient-to-l from-purple-500/50 to-transparent"></div>
+          <div className="absolute bottom-32 left-20 w-56 h-px bg-gradient-to-r from-pink-500/50 to-transparent"></div>
         </div>
       </div>
 
