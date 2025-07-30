@@ -381,6 +381,16 @@ img {
   font-weight: 500 !important;
 }
 
+/* Masquer la navigation indésirable en double */
+nav.bg-white\/10.backdrop-blur-xl {
+  display: none !important;
+}
+
+/* Alternative pour masquer l'élément nav parasite */
+nav[class*="bg-white/10"][class*="backdrop-blur-xl"][class*="border-white/20"] {
+  display: none !important;
+}
+
 .glass-nav-item:hover {
   background: rgba(59, 130, 246, 0.25) !important;
   border: 1px solid rgba(59, 130, 246, 0.4) !important;
