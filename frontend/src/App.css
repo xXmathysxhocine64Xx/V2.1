@@ -33,10 +33,24 @@
 
 @keyframes slide-right {
   0% {
-    transform: translateX(0);
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  5% {
+    opacity: 0.3;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  85% {
+    opacity: 0.6;
+  }
+  95% {
+    opacity: 0.2;
   }
   100% {
     transform: translateX(100vw);
+    opacity: 0;
   }
 }
 
