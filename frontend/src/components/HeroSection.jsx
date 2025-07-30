@@ -164,22 +164,51 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Éléments décoratifs modernes */}
+      {/* Navigation flottante moderne */}
+      <div className="absolute top-8 left-1/2 transform -translate-x-1/2 z-20">
+        <nav className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl px-8 py-4">
+          <div className="flex items-center space-x-8">
+            <div className="text-white font-bold text-xl">WebCraft</div>
+            <div className="hidden md:flex items-center space-x-6 text-sm">
+              <a href="#services" className="text-white/80 hover:text-white transition-colors">Services</a>
+              <a href="#portfolio" className="text-white/80 hover:text-white transition-colors">Portfolio</a>
+              <a href="#contact" className="text-white/80 hover:text-white transition-colors">Contact</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      {/* Éléments décoratifs statiques */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Icônes technologiques flottantes */}
-        <div className="absolute top-32 left-8 bg-white/10 backdrop-blur-sm rounded-lg p-4 animate-float opacity-80">
-          <Code className="h-8 w-8 text-blue-400" />
-        </div>
-        <div className="absolute top-48 right-12 bg-white/10 backdrop-blur-sm rounded-lg p-4 animate-float opacity-80" style={{animationDelay: '1s'}}>
-          <Palette className="h-8 w-8 text-purple-400" />
-        </div>
-        <div className="absolute top-80 left-16 bg-white/10 backdrop-blur-sm rounded-lg p-4 animate-float opacity-80" style={{animationDelay: '2s'}}>
-          <Zap className="h-8 w-8 text-pink-400" />
+        {/* Cards flottantes statiques */}
+        <div className="absolute top-32 left-8 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 max-w-xs">
+          <div className="flex items-center space-x-3 mb-3">
+            <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
+              <Code className="h-4 w-4 text-white" />
+            </div>
+            <span className="text-white font-semibold">React & Next.js</span>
+          </div>
+          <p className="text-gray-300 text-sm">Développement moderne avec les meilleures technologies</p>
         </div>
         
-        {/* Badge technologique */}
-        <div className="absolute top-24 right-32 bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-sm rounded-full px-6 py-2 border border-white/20 animate-pulse">
-          <span className="text-white text-sm font-semibold">Next.js • React • TailwindCSS</span>
+        <div className="absolute top-48 right-8 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 max-w-xs">
+          <div className="flex items-center space-x-3 mb-3">
+            <div className="w-8 h-8 bg-purple-500 rounded-lg flex items-center justify-center">
+              <Palette className="h-4 w-4 text-white" />
+            </div>
+            <span className="text-white font-semibold">Design UI/UX</span>
+          </div>
+          <p className="text-gray-300 text-sm">Interface élégante et expérience utilisateur optimale</p>
+        </div>
+
+        <div className="absolute bottom-32 left-12 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 max-w-xs">
+          <div className="flex items-center space-x-3 mb-3">
+            <div className="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center">
+              <Zap className="h-4 w-4 text-white" />
+            </div>
+            <span className="text-white font-semibold">Performance</span>
+          </div>
+          <p className="text-gray-300 text-sm">Sites ultra-rapides et optimisés SEO</p>
         </div>
       </div>
 
