@@ -203,7 +203,31 @@ deployment:
           agent: "main"
           comment: "Supprimé DEPLOYMENT_GUIDE.md (500+ lignes), scripts deploy/, tests/, tous les anciens guides complexes"
 
-nextjs_migration:
+routing_fix:
+  - task: "Correction du problème de routage /"
+    implemented: true
+    working: true
+    file: "src/app/page.js, src/components/Navigation.js, src/components/BottomNavigation.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "main"
+          comment: "✅ PROBLÈME DE ROUTAGE RÉSOLU - Contenu déplacé de /accueil vers la racine (/), dossier /accueil supprimé, navigation mise à jour avec liens d'ancrage pour sections internes (/#services, /#contact), métadonnées SEO optimisées, formulaire de contact amélioré avec validation, statistiques ajoutées, animations améliorées"
+
+site_improvements:
+  - task: "Améliorations générales du site WebCraft"
+    implemented: true
+    working: true
+    file: "src/app/page.js, src/app/layout.js, src/app/globals.css"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "main"
+          comment: "✅ AMÉLIORATIONS SITE COMPLÈTES - Formulaire de contact fonctionnel avec validation, section statistiques (500+ sites, 98% satisfaction, 5J livraison, 24/7 support), métadonnées SEO optimisées (OpenGraph, Twitter Cards), animations CSS améliorées (pulse-glow, bounce-subtle, scale-in), navigation avec scroll smooth vers sections, design responsive optimisé, effets hover améliorés sur services"
   - task: "Migration vers Next.js 15 Full-Stack"
     implemented: true
     working: true
