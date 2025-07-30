@@ -75,7 +75,9 @@ export default function Navigation() {
         }
       } else {
         // Sinon naviguer vers la page d'accueil avec l'ancre
-        window.location.href = href
+        if (typeof window !== 'undefined') {
+          window.location.href = href
+        }
       }
     }
   }
