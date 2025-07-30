@@ -38,7 +38,7 @@ export function ThemeProvider({ children }) {
 
   // Écouter les changements de préférence système
   useEffect(() => {
-    if (!mounted || !isDarkModeEnabled) return
+    if (!mounted || !isDarkModeEnabled || typeof window === 'undefined') return
 
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
     const handleChange = (e) => {
