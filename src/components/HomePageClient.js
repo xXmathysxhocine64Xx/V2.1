@@ -290,16 +290,16 @@ const HomePageClient = () => {
           </div>
         </div>
 
-        {/* Terminal Windows flottants modernisés */}
+        {/* Terminal Windows flottants modernisés - repositionnés */}
         <div className="absolute inset-0 pointer-events-none">
           {codeSnippets.map((snippet, index) => (
             <div
               key={index}
               className={`absolute ${
-                snippet.position === 'left-top' ? 'left-8 top-32' :
-                snippet.position === 'right-top' ? 'right-8 top-48' :
-                snippet.position === 'left-middle' ? 'left-12 top-96' :
-                'right-12 top-80'
+                snippet.position === 'left-top' ? 'left-8 top-40' :
+                snippet.position === 'right-top' ? 'right-8 top-56' :
+                snippet.position === 'left-middle' ? 'left-12 top-[28rem]' :
+                'right-12 top-96'
               } hidden xl:block`}
             >
               <div className="bg-black/80 backdrop-blur-md rounded-xl p-5 shadow-2xl max-w-sm animate-float border border-cyan-500/30 hover:border-cyan-400/60 transition-all duration-500 hover:shadow-cyan-400/20 hover:shadow-xl">
