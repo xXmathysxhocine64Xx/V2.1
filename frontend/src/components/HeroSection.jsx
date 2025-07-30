@@ -13,8 +13,8 @@ const HeroSection = () => {
     }
   };
 
-  const scrollToPortfolio = () => {
-    const element = document.getElementById('portfolio');
+  const scrollToDemos = () => {
+    const element = document.getElementById('demos');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
