@@ -332,6 +332,11 @@ metadata:
   test_sequence: 5
   run_ui: false
 
+test_plan:
+  current_focus: []
+  stuck_tasks: []
+  test_all: false
+  test_priority: "high_first"
 agent_communication:
     - agent: "main"
       message: "Backend complètement refait avec FastAPI + JSON storage. Installation simplifiée à 1 seule commande. Anciennes procédures complexes supprimées. Prêt pour test de déploiement."
