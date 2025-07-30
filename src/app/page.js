@@ -209,8 +209,8 @@ const HomePage = () => {
                 style={{
                   left: `${Math.random() * 100}%`,
                   top: `${Math.random() * 100}%`,
-                  animationDelay: `${Math.random() * 8}s`,
-                  animationDuration: `${6 + Math.random() * 8}s`
+                  animationDelay: `${Math.random() * 10}s`,
+                  animationDuration: `${7 + Math.random() * 8}s`
                 }}
               />
             ))}
