@@ -84,7 +84,7 @@ export default function Navigation() {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 hidden md:block ${
+      <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 hidden md:block ${
         scrolled 
           ? 'glass-effect-strong border-b border-white/20 dark:border-gray-700/20 shadow-2xl shadow-black/10' 
           : 'glass-effect border-b border-white/10 dark:border-gray-700/10 shadow-lg shadow-black/5'
