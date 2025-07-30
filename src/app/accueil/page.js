@@ -145,13 +145,12 @@ const WebCraftBusinessPage = memo(() => {
                 <ArrowRight className="ml-3 w-6 h-6" />
               </Button>
               <Button 
-                variant="outline" 
+                onClick={() => scrollToSection('demos')}
+                variant="outline"
                 size="lg"
-                className="border-2 border-slate-600 text-slate-300 hover:bg-blue-500/20 hover:border-blue-400 hover:text-blue-300 px-10 py-6 text-lg font-semibold rounded-2xl transition-all duration-300 hover:scale-105"
-                onClick={() => scrollToSection('portfolio')}
+                className="group border-2 border-cyan-400/60 text-cyan-400 hover:bg-cyan-400/10 hover:border-cyan-300 hover:text-cyan-300 px-10 py-5 text-lg font-semibold rounded-full transition-all duration-500 transform hover:scale-105 backdrop-blur-sm hover:shadow-lg hover:shadow-cyan-400/20"
               >
-                <Award className="mr-3 w-6 h-6" />
-                <span>Voir Nos Réalisations</span>
+                <span className="group-hover:text-cyan-200 transition-colors duration-300">Voir nos démos</span>
               </Button>
             </div>
 
