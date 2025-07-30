@@ -16,6 +16,21 @@ const HomePage = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState('');
+  const [particlesData, setParticlesData] = useState([]);
+  const [mounted, setMounted] = useState(false);
+
+  // Générer les données des particules côté client uniquement
+  useEffect(() => {
+    setMounted(true);
+    const particles = Array.from({ length: 50 }).map((_, i) => ({
+      id: i,
+      left: Math.random() * 100,
+      top: Math.random() * 100,
+      delay: Math.random() * 10,
+      duration: 7 + Math.random() * 8
+    }));
+    setParticlesData(particles);
+  }, []);
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
