@@ -249,12 +249,12 @@ const HeroSection = () => {
                   <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-2 transition-transform" />
                 </Button>
                 <Button 
-                  onClick={scrollToPortfolio}
+                  onClick={scrollToDemos}
                   variant="outline"
                   size="lg"
                   className="group border-2 border-white text-white hover:bg-white hover:text-gray-900 px-12 py-6 text-xl font-bold transition-all duration-300 transform hover:scale-105 rounded-2xl"
                 >
-                  Nos réalisations
+                  Voir nos démos
                 </Button>
               </div>
               
