@@ -195,57 +195,102 @@ const HomePageClient = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section WebCraft avec animations améliorées */}
+      {/* Hero Section WebCraft Ultra-Moderne */}
       <section id="accueil" className="min-h-screen relative overflow-hidden">
-        {/* Background animé avec lignes de code */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
-          {/* Lignes de code en arrière-plan */}
-          <div className="absolute inset-0 opacity-20">
-            {backgroundCodeLines.map((line, index) => (
+        {/* Background Ultra-Moderne avec Mesh Gradient */}
+        <div className="absolute inset-0">
+          {/* Gradient de base modernisé */}
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-slate-900 to-black"></div>
+          
+          {/* Mesh Gradient Overlay */}
+          <div className="absolute inset-0 opacity-80" style={{
+            background: `
+              radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.4) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(147, 51, 234, 0.4) 0%, transparent 50%),
+              radial-gradient(circle at 40% 40%, rgba(16, 185, 129, 0.3) 0%, transparent 50%)
+            `
+          }}></div>
+
+          {/* Formes géométriques flottantes */}
+          <div className="absolute inset-0">
+            {/* Cercles lumineux */}
+            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute top-3/4 right-1/4 w-80 h-80 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse animation-delay-200"></div>
+            <div className="absolute top-1/2 left-3/4 w-64 h-64 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-full blur-3xl animate-pulse animation-delay-400"></div>
+            
+            {/* Hexagones technologiques */}
+            {mounted && Array.from({ length: 12 }).map((_, i) => (
               <div
-                key={index}
-                className={`absolute text-xs text-green-400 font-mono whitespace-nowrap animate-slide-right`}
+                key={`hex-${i}`}
+                className="absolute opacity-10"
                 style={{
-                  top: `${(index * 30) % 100}%`,
-                  left: '-100%',
-                  animationDelay: `${index * 0.8}s`,
-                  animationDuration: '28s'
+                  left: `${10 + (i * 15) % 80}%`,
+                  top: `${20 + (i * 12) % 60}%`,
+                  transform: `rotate(${i * 30}deg)`,
+                  animationDelay: `${i * 0.5}s`
                 }}
               >
-                {line}
+                <div className="w-16 h-16 border-2 border-blue-400/30 transform rotate-45 animate-spin-slow"></div>
               </div>
             ))}
+            
+            {/* Lignes connectées */}
+            <svg className="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 1000 800">
+              <defs>
+                <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="rgb(59, 130, 246)" stopOpacity="0"/>
+                  <stop offset="50%" stopColor="rgb(59, 130, 246)" stopOpacity="1"/>
+                  <stop offset="100%" stopColor="rgb(147, 51, 234)" stopOpacity="0"/>
+                </linearGradient>
+              </defs>
+              <path d="M 100 200 Q 500 100 900 300" stroke="url(#lineGradient)" strokeWidth="2" fill="none" className="animate-pulse">
+                <animate attributeName="stroke-dasharray" values="0,1000;1000,0" dur="4s" repeatCount="indefinite"/>
+              </path>
+              <path d="M 200 600 Q 500 400 800 500" stroke="url(#lineGradient)" strokeWidth="2" fill="none" className="animate-pulse animation-delay-200">
+                <animate attributeName="stroke-dasharray" values="0,1000;1000,0" dur="4s" repeatCount="indefinite"/>
+              </path>
+            </svg>
           </div>
-          
-          {/* Particules flottantes améliorées */}
+
+          {/* Particules technologiques modernisées */}
           <div className="absolute inset-0">
             {mounted && particlesData.map((particle) => (
               <div
                 key={particle.id}
-                className="absolute w-1 h-1 bg-blue-400 rounded-full animate-float-particle"
+                className="absolute opacity-60"
                 style={{
                   left: `${particle.left}%`,
                   top: `${particle.top}%`,
                   animationDelay: `${particle.delay}s`,
                   animationDuration: `${particle.duration}s`
                 }}
-              />
+              >
+                <div className="w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full animate-float-particle shadow-lg shadow-blue-400/50"></div>
+              </div>
             ))}
           </div>
 
-          {/* Grille technologique */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="h-full w-full" style={{
-              backgroundImage: `
-                linear-gradient(90deg, rgb(59 130 246 / 0.3) 1px, transparent 1px),
-                linear-gradient(180deg, rgb(59 130 246 / 0.3) 1px, transparent 1px)
-              `,
-              backgroundSize: '40px 40px'
-            }}></div>
+          {/* Code Matrix moderne */}
+          <div className="absolute inset-0 opacity-15">
+            {backgroundCodeLines.slice(0, 20).map((line, index) => (
+              <div
+                key={index}
+                className="absolute text-sm text-cyan-400 font-mono whitespace-nowrap animate-slide-right"
+                style={{
+                  top: `${(index * 40) % 100}%`,
+                  left: '-100%',
+                  animationDelay: `${index * 1.2}s`,
+                  animationDuration: '25s',
+                  textShadow: '0 0 10px rgba(34, 197, 255, 0.5)'
+                }}
+              >
+                {line}
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Code snippets flottants avec animation typewriter */}
+        {/* Terminal Windows flottants modernisés */}
         <div className="absolute inset-0 pointer-events-none">
           {codeSnippets.map((snippet, index) => (
             <div
@@ -257,19 +302,19 @@ const HomePageClient = () => {
                 'right-12 top-80'
               } hidden xl:block`}
             >
-              <div className="bg-gray-900/90 backdrop-blur-sm rounded-lg p-4 shadow-2xl max-w-xs animate-float opacity-90 hover:opacity-100 transition-opacity duration-300 border border-blue-500/20">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs text-blue-400 font-semibold">{snippet.language}</span>
-                  <div className="flex space-x-1">
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+              <div className="bg-black/80 backdrop-blur-md rounded-xl p-5 shadow-2xl max-w-sm animate-float border border-cyan-500/30 hover:border-cyan-400/60 transition-all duration-500 hover:shadow-cyan-400/20 hover:shadow-xl">
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center space-x-2">
+                    <div className="w-3 h-3 bg-red-500 rounded-full shadow-sm"></div>
+                    <div className="w-3 h-3 bg-yellow-500 rounded-full shadow-sm"></div>
+                    <div className="w-3 h-3 bg-green-500 rounded-full shadow-sm"></div>
                   </div>
+                  <span className="text-xs text-cyan-400 font-bold tracking-wider bg-cyan-400/10 px-2 py-1 rounded">{snippet.language}</span>
                 </div>
-                <pre className="text-xs text-gray-300 overflow-hidden whitespace-pre-wrap">
+                <pre className="text-xs text-gray-300 overflow-hidden whitespace-pre-wrap leading-relaxed">
                   <code className="font-mono">
                     {typedTexts[snippet.id] || ''}
-                    {currentLines[snippet.id] && <span className="text-green-400 animate-pulse">|</span>}
+                    {currentLines[snippet.id] && <span className="text-cyan-400 animate-pulse bg-cyan-400/20 px-1">|</span>}
                   </code>
                 </pre>
               </div>
@@ -277,92 +322,120 @@ const HomePageClient = () => {
           ))}
         </div>
 
-        {/* Contenu principal WebCraft */}
-        <div className="relative z-10 pt-32 pb-20">
+        {/* Contenu principal ultra-moderne */}
+        <div className="relative z-10 pt-40 pb-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
-              <div className="animate-fade-in-up">
-                <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-                  <span className="text-white">Créons ensemble votre</span>
+              {/* Titre principal révolutionnaire */}
+              <div className="animate-fade-in-up mb-16">
+                <div className="mb-6">
+                  <span className="text-lg text-cyan-400 font-mono tracking-widest uppercase opacity-80">// WebCraft Studio</span>
+                </div>
+                <h1 className="text-6xl md:text-8xl font-black mb-8 leading-none">
+                  <div className="relative inline-block">
+                    <span className="text-white drop-shadow-2xl">WEB</span>
+                    <div className="absolute inset-0 text-white opacity-20 blur-sm scale-110">WEB</div>
+                  </div>
                   <br />
-                  <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent animate-gradient-x">
-                    site web parfait
-                  </span>
+                  <div className="relative inline-block mt-4">
+                    <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent animate-gradient-x">
+                      CRAFT
+                    </span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent opacity-30 blur-sm scale-110 animate-gradient-x">
+                      CRAFT
+                    </div>
+                  </div>
                 </h1>
-                <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-                  Nous concevons et développons des sites web modernes, performants et sur mesure pour propulser votre entreprise vers le succès digital.
+                <div className="h-1 w-32 bg-gradient-to-r from-cyan-400 to-purple-600 mx-auto mb-8 rounded-full animate-pulse"></div>
+                <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed font-light">
+                  <span className="text-cyan-400 font-semibold">Créateur d'expériences digitales</span> — Nous concevons des univers web 
+                  qui transforment votre vision en réalité numérique époustouflante.
                 </p>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-fade-in-up" style={{animationDelay: '0.2s'}}>
+              {/* Boutons d'action futuristes */}
+              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20 animate-fade-in-up" style={{animationDelay: '0.2s'}}>
                 <Button 
                   onClick={() => scrollToSection('contact')}
                   size="lg"
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border-0 rounded-full"
+                  className="group relative bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white px-10 py-5 text-lg font-semibold rounded-full transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-cyan-400/30 border-0 overflow-hidden"
                 >
-                  Demander un devis
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                  <span className="relative z-10">Lancer votre projet</span>
+                  <ArrowRight className="ml-3 h-6 w-6 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
                 </Button>
                 <Button 
                   onClick={() => scrollToSection('services')}
                   variant="outline"
                   size="lg"
-                  className="border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white px-8 py-4 text-lg transition-all duration-300 transform hover:scale-105 backdrop-blur-sm rounded-full"
+                  className="group border-2 border-cyan-400/60 text-cyan-400 hover:bg-cyan-400/10 hover:border-cyan-300 hover:text-cyan-300 px-10 py-5 text-lg font-semibold rounded-full transition-all duration-500 transform hover:scale-105 backdrop-blur-sm hover:shadow-lg hover:shadow-cyan-400/20"
                 >
-                  Voir nos services
+                  <span className="group-hover:text-cyan-200 transition-colors duration-300">Explorer nos créations</span>
                 </Button>
               </div>
 
-              {/* Statistiques améliorées */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto mb-16 animate-fade-in-up" style={{animationDelay: '0.4s'}}>
-                <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 animate-scale-in animation-delay-100">
-                  <div className="text-3xl font-bold text-blue-400 mb-2">500+</div>
-                  <div className="text-gray-300 text-sm">Sites créés</div>
-                </div>
-                <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 animate-scale-in animation-delay-200">
-                  <div className="text-3xl font-bold text-purple-400 mb-2">98%</div>
-                  <div className="text-gray-300 text-sm">Clients satisfaits</div>
-                </div>
-                <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 animate-scale-in animation-delay-300">
-                  <div className="text-3xl font-bold text-cyan-400 mb-2">5J</div>
-                  <div className="text-gray-300 text-sm">Livraison moyenne</div>
-                </div>
-                <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 animate-scale-in">
-                  <div className="text-3xl font-bold text-green-400 mb-2">24/7</div>
-                  <div className="text-gray-300 text-sm">Support technique</div>
-                </div>
+              {/* Métriques modernisées */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto mb-20 animate-fade-in-up" style={{animationDelay: '0.4s'}}>
+                {[
+                  { value: '500+', label: 'Projets réalisés', color: 'from-cyan-400 to-blue-500', icon: '🚀' },
+                  { value: '98%', label: 'Satisfaction client', color: 'from-purple-400 to-pink-500', icon: '⭐' },
+                  { value: '5J', label: 'Délai moyen', color: 'from-green-400 to-teal-500', icon: '⚡' },
+                  { value: '24/7', label: 'Support expert', color: 'from-orange-400 to-red-500', icon: '🛡️' }
+                ].map((metric, index) => (
+                  <div key={index} className={`group bg-black/40 backdrop-blur-md p-8 rounded-2xl border border-white/10 hover:border-cyan-400/40 transition-all duration-500 hover:bg-black/60 hover:shadow-xl hover:shadow-cyan-400/10 animate-scale-in ${
+                    index === 0 ? 'animation-delay-100' :
+                    index === 1 ? 'animation-delay-200' :
+                    index === 2 ? 'animation-delay-300' :
+                    'animation-delay-400'
+                  }`}>
+                    <div className="text-4xl mb-3 group-hover:scale-110 transition-transform duration-300">{metric.icon}</div>
+                    <div className={`text-4xl font-black mb-3 bg-gradient-to-r ${metric.color} bg-clip-text text-transparent`}>{metric.value}</div>
+                    <div className="text-gray-400 text-sm font-medium group-hover:text-gray-300 transition-colors duration-300">{metric.label}</div>
+                  </div>
+                ))}
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto animate-fade-in-up" style={{animationDelay: '0.6s'}}>
-                <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-2 border border-white/20 group animate-bounce-subtle">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 animate-pulse-glow">
-                    <Code className="h-8 w-8 text-white" />
+              {/* Services Cards révolutionnaires */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-7xl mx-auto animate-fade-in-up" style={{animationDelay: '0.6s'}}>
+                {[
+                  { 
+                    icon: Code, 
+                    title: 'Développement\nAvant-garde',
+                    description: 'Architecture technique moderne avec les dernières innovations du web',
+                    gradient: 'from-cyan-500 to-blue-600',
+                    hoverGlow: 'hover:shadow-cyan-400/30'
+                  },
+                  { 
+                    icon: Palette, 
+                    title: 'Design\nExpérientiel', 
+                    description: 'Interfaces utilisateur immersives qui marquent les esprits',
+                    gradient: 'from-purple-500 to-pink-600',
+                    hoverGlow: 'hover:shadow-purple-400/30'
+                  },
+                  { 
+                    icon: Zap, 
+                    title: 'Performance\nExtrême', 
+                    description: 'Optimisation maximale pour une expérience utilisateur fulgurante',
+                    gradient: 'from-green-500 to-teal-600',
+                    hoverGlow: 'hover:shadow-green-400/30'
+                  }
+                ].map((service, index) => (
+                  <div key={index} className={`group bg-black/30 backdrop-blur-lg p-10 rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-700 transform hover:-translate-y-4 border border-white/10 hover:border-white/20 hover:bg-black/40 animate-scale-in ${service.hoverGlow} ${
+                    index === 0 ? 'animation-delay-100' :
+                    index === 1 ? 'animation-delay-300' :
+                    'animation-delay-500'
+                  }`}>
+                    <div className={`w-20 h-20 bg-gradient-to-br ${service.gradient} rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg`}>
+                      <service.icon className="h-10 w-10 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-6 text-center group-hover:text-cyan-100 transition-colors duration-300 leading-tight whitespace-pre-line">
+                      {service.title}
+                    </h3>
+                    <p className="text-gray-400 leading-relaxed text-center group-hover:text-gray-300 transition-colors duration-300 text-lg">
+                      {service.description}
+                    </p>
                   </div>
-                  <h3 className="text-xl font-semibold text-white mb-4">Développement sur mesure</h3>
-                  <p className="text-gray-300 leading-relaxed">
-                    Création de sites web uniques adaptés à vos besoins spécifiques et à votre identité de marque.
-                  </p>
-                </div>
-
-                <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-2 border border-white/20 group animate-bounce-subtle animation-delay-200">
-                  <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 animate-pulse-glow animation-delay-100">
-                    <Palette className="h-8 w-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-white mb-4">Design moderne</h3>
-                  <p className="text-gray-300 leading-relaxed">
-                    Interfaces utilisateur élégantes et responsive avec les dernières tendances du design web.
-                  </p>
-                </div>
-
-                <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-2 border border-white/20 group animate-bounce-subtle animation-delay-300">
-                  <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 animate-pulse-glow animation-delay-200">
-                    <Zap className="h-8 w-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-white mb-4">Performance optimisée</h3>
-                  <p className="text-gray-300 leading-relaxed">
-                    Sites rapides, sécurisés et optimisés pour les moteurs de recherche et l'expérience utilisateur.
-                  </p>
-                </div>
+                ))}
               </div>
             </div>
           </div>
