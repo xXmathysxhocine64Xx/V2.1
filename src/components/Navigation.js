@@ -11,6 +11,8 @@ export default function Navigation() {
   const pathname = usePathname()
 
   useEffect(() => {
+    if (typeof window === 'undefined') return
+    
     const handleScroll = () => {
       const offset = window.scrollY
       setScrolled(offset > 50)
