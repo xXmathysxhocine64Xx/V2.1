@@ -77,7 +77,7 @@ export default function RootLayout({ children }) {
         <ThemeProvider>
           <Navigation />
           <ThemeToggle />
-          <main className="pt-0 md:pt-16 pb-20 md:pb-0 bg-theme min-h-screen relative overflow-x-hidden">
+          <main className="pt-0 pb-20 md:pb-0 bg-theme min-h-screen relative overflow-x-hidden">
             {children}
           </main>
           <BottomNavigation />
