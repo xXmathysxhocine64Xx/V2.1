@@ -298,27 +298,27 @@ const HomePage = () => {
 
               {/* Statistiques améliorées */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto mb-16 animate-fade-in-up" style={{animationDelay: '0.4s'}}>
-                <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 animate-scale-in animation-delay-100">
                   <div className="text-3xl font-bold text-blue-400 mb-2">500+</div>
                   <div className="text-gray-300 text-sm">Sites créés</div>
                 </div>
-                <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 animate-scale-in animation-delay-200">
                   <div className="text-3xl font-bold text-purple-400 mb-2">98%</div>
                   <div className="text-gray-300 text-sm">Clients satisfaits</div>
                 </div>
-                <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 animate-scale-in animation-delay-300">
                   <div className="text-3xl font-bold text-cyan-400 mb-2">5J</div>
                   <div className="text-gray-300 text-sm">Livraison moyenne</div>
                 </div>
-                <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 animate-scale-in">
                   <div className="text-3xl font-bold text-green-400 mb-2">24/7</div>
                   <div className="text-gray-300 text-sm">Support technique</div>
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto animate-fade-in-up" style={{animationDelay: '0.6s'}}>
-                <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-2 border border-white/20 group">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-2 border border-white/20 group animate-bounce-subtle">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 animate-pulse-glow">
                     <Code className="h-8 w-8 text-white" />
                   </div>
                   <h3 className="text-xl font-semibold text-white mb-4">Développement sur mesure</h3>
@@ -327,8 +327,8 @@ const HomePage = () => {
                   </p>
                 </div>
 
-                <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-2 border border-white/20 group">
-                  <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-2 border border-white/20 group animate-bounce-subtle animation-delay-200">
+                  <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 animate-pulse-glow animation-delay-100">
                     <Palette className="h-8 w-8 text-white" />
                   </div>
                   <h3 className="text-xl font-semibold text-white mb-4">Design moderne</h3>
@@ -337,8 +337,8 @@ const HomePage = () => {
                   </p>
                 </div>
 
-                <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-2 border border-white/20 group">
-                  <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-2 border border-white/20 group animate-bounce-subtle animation-delay-300">
+                  <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 animate-pulse-glow animation-delay-200">
                     <Zap className="h-8 w-8 text-white" />
                   </div>
                   <h3 className="text-xl font-semibold text-white mb-4">Performance optimisée</h3>
