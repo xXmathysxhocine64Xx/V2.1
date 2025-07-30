@@ -248,35 +248,51 @@ const HeroSection = () => {
               </Button>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto animate-fade-in-up animation-delay-400">
-              <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-2 border border-white/20 animate-scale-in">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse-glow-bounce">
-                  <Code className="h-8 w-8 text-white" />
+            {/* Services grid modernisé */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto animate-fade-in-up animation-delay-400">
+              {/* Service 1 - Développement */}
+              <div className="group bg-white/5 backdrop-blur-md p-8 rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-4 border border-white/10 hover:border-white/20 hover:bg-white/10">
+                <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Code className="h-10 w-10 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-4">Développement sur mesure</h3>
-                <p className="text-gray-300 leading-relaxed">
-                  Création de sites web uniques adaptés à vos besoins spécifiques et à votre identité de marque.
+                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-blue-300 transition-colors">Développement Premium</h3>
+                <p className="text-gray-300 group-hover:text-gray-200 leading-relaxed text-lg">
+                  Création de sites web uniques et performants, adaptés à vos besoins spécifiques avec les dernières technologies.
                 </p>
+                <div className="mt-6 flex items-center text-blue-400 font-medium">
+                  <span>En savoir plus</span>
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-2 transition-transform" />
+                </div>
               </div>
 
-              <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-2 border border-white/20 animate-scale-in" style={{animationDelay: '0.2s'}}>
-                <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse-glow-bounce">
-                  <Palette className="h-8 w-8 text-white" />
+              {/* Service 2 - Design */}
+              <div className="group bg-white/5 backdrop-blur-md p-8 rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-4 border border-white/10 hover:border-white/20 hover:bg-white/10">
+                <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Palette className="h-10 w-10 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-4">Refonte moderne</h3>
-                <p className="text-gray-300 leading-relaxed">
-                  Modernisation de votre site existant avec les dernières technologies et tendances du web.
+                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-purple-300 transition-colors">Design Moderne</h3>
+                <p className="text-gray-300 group-hover:text-gray-200 leading-relaxed text-lg">
+                  Interface utilisateur élégante et intuitive, optimisée pour l'expérience utilisateur et la conversion.
                 </p>
+                <div className="mt-6 flex items-center text-purple-400 font-medium">
+                  <span>En savoir plus</span>
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-2 transition-transform" />
+                </div>
               </div>
 
-              <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-2 border border-white/20 animate-scale-in" style={{animationDelay: '0.4s'}}>
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse-glow-bounce">
-                  <Zap className="h-8 w-8 text-white" />
+              {/* Service 3 - Performance */}
+              <div className="group bg-white/5 backdrop-blur-md p-8 rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-4 border border-white/10 hover:border-white/20 hover:bg-white/10">
+                <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Zap className="h-10 w-10 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-4">Performance optimisée</h3>
-                <p className="text-gray-300 leading-relaxed">
-                  Sites rapides, sécurisés et optimisés pour les moteurs de recherche et l'expérience utilisateur.
+                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-green-300 transition-colors">Performance Optimale</h3>
+                <p className="text-gray-300 group-hover:text-gray-200 leading-relaxed text-lg">
+                  Sites ultra-rapides, sécurisés et optimisés SEO pour un référencement exceptionnel sur Google.
                 </p>
+                <div className="mt-6 flex items-center text-green-400 font-medium">
+                  <span>En savoir plus</span>
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-2 transition-transform" />
+                </div>
               </div>
             </div>
           </div>
