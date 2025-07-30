@@ -381,14 +381,16 @@ img {
   font-weight: 500 !important;
 }
 
-/* Masquer la navigation indésirable en double */
-nav.bg-white\/10.backdrop-blur-xl {
+/* Masquer la navigation indésirable en double - version corrigée */
+nav[class*="backdrop-blur-xl"][class*="rounded-2xl"][class*="px-8"] {
   display: none !important;
+  visibility: hidden !important;
 }
 
-/* Alternative pour masquer l'élément nav parasite */
-nav[class*="bg-white/10"][class*="backdrop-blur-xl"][class*="border-white/20"] {
+/* Alternative plus spécifique */
+nav[class*="bg-white"][class*="backdrop-blur-xl"][class*="border"][class*="border-white"] {
   display: none !important;
+  visibility: hidden !important;
 }
 
 .glass-nav-item:hover {
