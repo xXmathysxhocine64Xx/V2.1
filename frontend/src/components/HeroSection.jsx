@@ -212,55 +212,69 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Contenu principal moderne */}
-      <div className="relative z-10 pt-32 pb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Contenu principal totalement repensé */}
+      <div className="relative z-10 pt-40 pb-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            {/* Badge d'introduction */}
-            <div className="animate-fade-in-up mb-8">
-              <span className="inline-block bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-2 text-sm text-white/90 font-medium">
-                ✨ Votre partenaire digital de confiance
-              </span>
-            </div>
-
-            {/* Titre principal redessiné */}
-            <div className="animate-fade-in-up animation-delay-200">
-              <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-tight">
-                <span className="block text-white mb-2">Créons</span>
-                <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                  l'excellence
+            {/* Hero Title */}
+            <div className="mb-12">
+              <h1 className="text-7xl md:text-9xl font-black mb-6 leading-none">
+                <span className="block text-white mb-4">WEB</span>
+                <span className="block bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+                  CRAFT
                 </span>
-                <span className="block text-white">ensemble</span>
               </h1>
+              <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
             </div>
 
-            {/* Sous-titre simplifié */}
-            <div className="animate-fade-in-up animation-delay-400">
-              <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed font-light">
-                Développement de sites web modernes, performants et sur mesure pour <br />
-                <span className="text-blue-400 font-medium">propulser votre entreprise vers le succès digital</span>
+            {/* Slogan */}
+            <div className="mb-16">
+              <p className="text-2xl md:text-3xl text-white font-light mb-4 leading-relaxed">
+                Créateur d'expériences digitales
+              </p>
+              <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                Nous concevons et développons des sites web exceptionnels qui transforment vos idées en succès digital mesurable
               </p>
             </div>
 
-            {/* Boutons d'action redessinés */}
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20 animate-fade-in-up animation-delay-400">
-              <Button 
-                onClick={scrollToContact}
-                size="lg"
-                className="group bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-10 py-5 text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border-0 rounded-2xl font-semibold"
-              >
-                Démarrer mon projet
-                <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button 
-                onClick={scrollToPortfolio}
-                variant="outline"
-                size="lg"
-                className="group border-2 border-white/30 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 hover:border-white/50 px-10 py-5 text-lg transition-all duration-300 transform hover:scale-105 rounded-2xl font-semibold"
-              >
-                Voir nos créations
-                <Code className="ml-3 h-5 w-5 group-hover:rotate-12 transition-transform" />
-              </Button>
+            {/* CTA Section */}
+            <div className="mb-20">
+              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
+                <Button 
+                  onClick={scrollToContact}
+                  size="lg"
+                  className="group bg-white text-gray-900 hover:bg-gray-100 px-12 py-6 text-xl font-bold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl rounded-2xl"
+                >
+                  Commencer maintenant
+                  <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-2 transition-transform" />
+                </Button>
+                <Button 
+                  onClick={scrollToPortfolio}
+                  variant="outline"
+                  size="lg"
+                  className="group border-2 border-white text-white hover:bg-white hover:text-gray-900 px-12 py-6 text-xl font-bold transition-all duration-300 transform hover:scale-105 rounded-2xl"
+                >
+                  Nos réalisations
+                </Button>
+              </div>
+              
+              {/* Stats */}
+              <div className="flex justify-center items-center space-x-12 text-center">
+                <div>
+                  <div className="text-3xl font-bold text-white mb-1">500+</div>
+                  <div className="text-gray-400 text-sm">Projets réalisés</div>
+                </div>
+                <div className="w-px h-12 bg-gray-600"></div>
+                <div>
+                  <div className="text-3xl font-bold text-white mb-1">98%</div>
+                  <div className="text-gray-400 text-sm">Clients satisfaits</div>
+                </div>
+                <div className="w-px h-12 bg-gray-600"></div>
+                <div>
+                  <div className="text-3xl font-bold text-white mb-1">5j</div>
+                  <div className="text-gray-400 text-sm">Délai moyen</div>
+                </div>
+              </div>
             </div>
 
             {/* Services grid modernisé */}
