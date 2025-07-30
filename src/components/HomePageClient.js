@@ -196,7 +196,7 @@ const HomePageClient = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section WebCraft Ultra-Moderne */}
-      <section id="accueil" className="min-h-screen relative overflow-hidden">
+      <section id="accueil" className="min-h-screen relative overflow-hidden pt-16">
         {/* Background Ultra-Moderne avec Mesh Gradient */}
         <div className="absolute inset-0">
           {/* Gradient de base modernisé */}
