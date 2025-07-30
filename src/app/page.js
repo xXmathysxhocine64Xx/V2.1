@@ -191,8 +191,8 @@ const HomePage = () => {
                 style={{
                   top: `${(index * 30) % 100}%`,
                   left: '-100%',
-                  animationDelay: `${index * 0.5}s`,
-                  animationDuration: '25s'
+                  animationDelay: `${index * 0.8}s`,
+                  animationDuration: '28s'
                 }}
               >
                 {line}
