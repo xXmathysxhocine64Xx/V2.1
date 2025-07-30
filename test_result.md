@@ -344,13 +344,16 @@ webcraft_animations:
     implemented: false
     working: false
     file: "frontend/src/App.css, frontend/src/components/HeroSection.jsx"
-    stuck_count: 0
+    stuck_count: 1
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
         - working: false
           agent: "testing"
           comment: "❌ ANIMATIONS PARTICULES NON CORRIGÉES - Test détaillé à http://localhost:3000/ révèle que les corrections demandées ne sont PAS implémentées: 1) PARTICULES FLOTTANTES: Durée encore 3-7s (ex: 3.90199s, 6.21878s) au lieu de 6-14s demandés, mouvement encore -20px au lieu de -10px max, pas d'opacité variable. 2) LIGNES CODE ARRIÈRE-PLAN: Durée encore 15s au lieu de 25s, délai encore 0.3s au lieu de 0.5s, pas d'effet fade in/out. 3) KEYFRAMES ACTUELS: float-particle translateY(-20px), slide-right 15s linear. Les animations fonctionnent mais ne respectent pas les spécifications de vitesse plus lente et subtile demandées."
+        - working: false
+          agent: "testing"
+          comment: "❌ CORRECTIONS ANIMATIONS TOUJOURS NON IMPLÉMENTÉES - Test complet avec Playwright confirme que AUCUNE des corrections demandées n'a été appliquée: 1) PARTICULES (50 trouvées): Durées 3.98-6.73s au lieu de 7-15s, mouvement translateY(-20px) au lieu de -8px max, pas de variation d'opacité 0.2-1.0. 2) LIGNES CODE (36 trouvées): Durée 15s au lieu de 28s, délai 0.3s au lieu de 0.8s, pas d'effet fade 0→0.6→0. 3) KEYFRAMES INCHANGÉS: float-particle avec -20px, slide-right 15s linear. Les animations fonctionnent visuellement mais ne respectent pas les spécifications de subtilité et lenteur demandées. ACTIONS REQUISES: Modifier keyframes CSS et durées JavaScript selon spécifications exactes."
 
 metadata:
   created_by: "main_agent"
