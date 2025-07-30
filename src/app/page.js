@@ -607,7 +607,11 @@ const HomePage = () => {
             <Button 
               size="lg"
               className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25"
-              onClick={() => window.location.href = 'mailto:contact@webcraft.fr'}
+              onClick={() => {
+                if (typeof window !== 'undefined') {
+                  window.location.href = 'mailto:contact@webcraft.fr'
+                }
+              }}
             >
               <Mail className="mr-2 w-5 h-5" />
               <span>Envoyer un email</span>
