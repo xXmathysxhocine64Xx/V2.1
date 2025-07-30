@@ -2,6 +2,9 @@
 const nextConfig = {
   // Configuration WebCraft optimisée
   
+  // Désactiver la génération statique pour éviter les erreurs window
+  output: 'standalone',
+  
   // Optimisations performance WebCraft
   experimental: {
     optimizePackageImports: ['lucide-react'],
