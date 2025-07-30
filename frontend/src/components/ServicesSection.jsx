@@ -54,9 +54,9 @@ const ServicesSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <Card key={index} className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border-0 shadow-lg">
+            <Card key={index} className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border-0 shadow-lg animate-scale-in" style={{animationDelay: `${index * 0.1}s`}}>
               <CardHeader className="text-center pb-4">
-                <div className="flex justify-center mb-4">
+                <div className="flex justify-center mb-4 animate-pulse-glow">
                   {service.icon}
                 </div>
                 <CardTitle className="text-xl font-semibold text-gray-900 mb-2">
@@ -70,7 +70,7 @@ const ServicesSection = () => {
                 <ul className="space-y-2">
                   {service.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center text-sm text-gray-700">
-                      <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
+                      <div className="w-2 h-2 bg-blue-600 rounded-full mr-3 animate-bounce-subtle"></div>
                       {feature}
                     </li>
                   ))}
