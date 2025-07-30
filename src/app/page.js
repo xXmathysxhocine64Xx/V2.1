@@ -620,7 +620,11 @@ const HomePage = () => {
               variant="outline" 
               size="lg"
               className="border-2 border-blue-400/50 text-blue-300 hover:bg-blue-400/10 hover:border-blue-400 px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105"
-              onClick={() => window.open('tel:+33123456789', '_self')}
+              onClick={() => {
+                if (typeof window !== 'undefined') {
+                  window.open('tel:+33123456789', '_self')
+                }
+              }}
             >
               <Phone className="mr-2 w-5 h-5" />
               <span>Appeler maintenant</span>
