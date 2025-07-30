@@ -326,11 +326,11 @@ webcraft_animations:
           comment: "❌ ANIMATIONS MANQUANTES IDENTIFIÉES - Les classes animate-pulse-glow, animate-bounce-subtle, et animate-scale-in mentionnées dans la demande ne sont pas définies dans le CSS. Ces animations ne sont pas implémentées dans le code actuel. Seule animate-pulse existe via Tailwind pour le skeleton component."
 
 
-test_plan:
-  current_focus: []
-  stuck_tasks: []
-  test_all: false
-  test_priority: "high_first"
+metadata:
+  created_by: "main_agent"
+  version: "4.0"
+  test_sequence: 5
+  run_ui: false
 
 agent_communication:
     - agent: "main"
