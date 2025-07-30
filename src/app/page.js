@@ -3,26 +3,10 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '../components/ui/button';
 import { ArrowRight, Code, Palette, Zap, Mail, MapPin, Server, Globe, Shield, Phone, Clock, Users } from 'lucide-react';
-import { useRouter } from 'next/navigation';
-import Image from 'next/image';
-
-// Métadonnées SEO optimisées pour la page d'accueil
-export const metadata = {
-  title: "WebCraft - Création de Sites Web Modernes | Développement Web Professionnel",
-  description: "WebCraft crée des sites web modernes, performants et sur mesure. Développement web professionnel, design responsive, optimisation SEO. Devis gratuit.",
-  keywords: "création site web, développement web, design moderne, site responsive, SEO, Next.js, React",
-  openGraph: {
-    title: "WebCraft - Création de Sites Web Modernes",
-    description: "Sites web professionnels sur mesure avec WebCraft. Design moderne, performance optimisée.",
-    type: "website",
-    locale: "fr_FR"
-  }
-};
 
 const HomePage = () => {
   const [typedTexts, setTypedTexts] = useState({});
   const [currentLines, setCurrentLines] = useState({});
-  const [isVisible, setIsVisible] = useState({});
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -32,7 +16,6 @@ const HomePage = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState('');
-  const router = useRouter();
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -46,8 +29,8 @@ const HomePage = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulation d'envoi (vous pouvez connecter à votre API)
     try {
+      // Simulation d'envoi - vous pouvez connecter à votre API
       await new Promise(resolve => setTimeout(resolve, 1000));
       setSubmitStatus('success');
       setFormData({ name: '', email: '', phone: '', project: '', message: '' });
@@ -159,7 +142,7 @@ const HomePage = () => {
     "}"
   ];
 
-  // Animation d'écriture améliorée
+  // Animation d'écriture
   const typeWriter = (text, snippetId, delay = 0) => {
     setTimeout(() => {
       let i = 0;
@@ -182,28 +165,6 @@ const HomePage = () => {
       }, 30);
     }, delay);
   };
-
-  // Intersection Observer pour les animations au scroll
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(prev => ({
-              ...prev,
-              [entry.target.id]: true
-            }));
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    const sections = document.querySelectorAll('[data-animate]');
-    sections.forEach(section => observer.observe(section));
-
-    return () => observer.disconnect();
-  }, []);
 
   useEffect(() => {
     codeSnippets.forEach(snippet => {
@@ -336,20 +297,20 @@ const HomePage = () => {
               </div>
 
               {/* Statistiques améliorées */}
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-5xl mx-auto mb-16 animate-fade-in-up" style={{animationDelay: '0.4s'}}>
-                <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto mb-16 animate-fade-in-up" style={{animationDelay: '0.4s'}}>
+                <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300">
                   <div className="text-3xl font-bold text-blue-400 mb-2">500+</div>
                   <div className="text-gray-300 text-sm">Sites créés</div>
                 </div>
-                <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10">
+                <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300">
                   <div className="text-3xl font-bold text-purple-400 mb-2">98%</div>
                   <div className="text-gray-300 text-sm">Clients satisfaits</div>
                 </div>
-                <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10">
+                <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300">
                   <div className="text-3xl font-bold text-cyan-400 mb-2">5J</div>
                   <div className="text-gray-300 text-sm">Livraison moyenne</div>
                 </div>
-                <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10">
+                <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300">
                   <div className="text-3xl font-bold text-green-400 mb-2">24/7</div>
                   <div className="text-gray-300 text-sm">Support technique</div>
                 </div>
@@ -390,3 +351,267 @@ const HomePage = () => {
           </div>
         </div>
       </section>
+
+      {/* Section Services WebCraft améliorée */}
+      <section id="services" className="py-20 bg-gradient-to-br from-gray-50 to-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Nos Services</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Des solutions complètes pour tous vos besoins digitaux, de la création à la maintenance de votre présence en ligne.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                icon: Globe,
+                title: "Création de sites web",
+                description: "Conception et développement de sites web professionnels sur mesure, adaptés à votre secteur d'activité.",
+                features: ["Design responsive", "CMS intégré", "Optimisation SEO", "Hébergement inclus"],
+                color: "from-blue-500 to-blue-600"
+              },
+              {
+                icon: Palette,
+                title: "Refonte de sites existants",
+                description: "Modernisation complète de votre site web avec les dernières technologies et tendances du design.",
+                features: ["Audit complet", "Nouvelle identité visuelle", "Migration sécurisée", "Formation incluse"],
+                color: "from-purple-500 to-purple-600"
+              },
+              {
+                icon: Server,
+                title: "Applications web",
+                description: "Développement d'applications web sur mesure avec Next.js pour une performance optimale.",
+                features: ["Architecture moderne", "Base de données", "API intégrées", "Évolutivité"],
+                color: "from-green-500 to-green-600"
+              },
+              {
+                icon: Shield,
+                title: "Sécurité & Maintenance",
+                description: "Protection et maintenance continue pour garantir la sécurité et les performances de votre site.",
+                features: ["Sauvegardes automatiques", "Mises à jour sécurité", "Monitoring 24/7", "Support technique"],
+                color: "from-red-500 to-red-600"
+              },
+              {
+                icon: Zap,
+                title: "Optimisation Performance",
+                description: "Amélioration des performances et de la vitesse de chargement pour une meilleure expérience utilisateur.",
+                features: ["Optimisation images", "Cache intelligent", "CDN global", "Audit performance"],
+                color: "from-yellow-500 to-yellow-600"
+              },
+              {
+                icon: Code,
+                title: "Développement API",
+                description: "Création d'APIs robustes et sécurisées pour connecter vos services et applications.",
+                features: ["REST & GraphQL", "Authentification", "Documentation", "Tests automatisés"],
+                color: "from-indigo-500 to-indigo-600"
+              }
+            ].map((service, index) => (
+              <div key={index} className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-gray-100 group">
+                <div className="flex justify-center mb-6">
+                  <div className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                    <service.icon className="h-8 w-8 text-white" />
+                  </div>
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4 text-center group-hover:text-blue-600 transition-colors duration-300">
+                  {service.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed mb-6 text-center">
+                  {service.description}
+                </p>
+                <ul className="space-y-3">
+                  {service.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-center text-sm text-gray-700">
+                      <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mr-3"></div>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section Contact WebCraft avec formulaire amélioré */}
+      <section id="contact" className="py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900 text-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Prêt à créer votre
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400"> site web ?</span>
+            </h2>
+            
+            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+              Contactez-nous dès aujourd'hui pour discuter de votre projet et obtenir un devis personnalisé.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Formulaire de contact */}
+            <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20">
+              <h3 className="text-2xl font-bold mb-6">Demander un devis</h3>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium mb-2">Nom complet</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                      placeholder="Votre nom"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium mb-2">Email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                      placeholder="votre@email.com"
+                    />
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium mb-2">Téléphone</label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                      placeholder="01 23 45 67 89"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="project" className="block text-sm font-medium mb-2">Type de projet</label>
+                    <select
+                      id="project"
+                      name="project"
+                      value={formData.project}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                    >
+                      <option value="" className="text-gray-900">Sélectionnez</option>
+                      <option value="site-vitrine" className="text-gray-900">Site vitrine</option>
+                      <option value="e-commerce" className="text-gray-900">E-commerce</option>
+                      <option value="application-web" className="text-gray-900">Application web</option>
+                      <option value="refonte" className="text-gray-900">Refonte</option>
+                      <option value="autre" className="text-gray-900">Autre</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium mb-2">Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    rows={4}
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none"
+                    placeholder="Décrivez votre projet..."
+                  />
+                </div>
+
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-3 px-6 rounded-lg font-semibold transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? 'Envoi en cours...' : 'Envoyer ma demande'}
+                  {!isSubmitting && <ArrowRight className="ml-2 w-5 h-5" />}
+                </Button>
+
+                {submitStatus === 'success' && (
+                  <div className="text-green-400 text-center font-medium">
+                    ✅ Message envoyé avec succès ! Nous vous recontactons rapidement.
+                  </div>
+                )}
+                {submitStatus === 'error' && (
+                  <div className="text-red-400 text-center font-medium">
+                    ❌ Erreur lors de l'envoi. Veuillez réessayer.
+                  </div>
+                )}
+              </form>
+            </div>
+
+            {/* Informations de contact */}
+            <div className="space-y-8">
+              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-white/20">
+                <div className="flex items-center mb-4">
+                  <Mail className="w-6 h-6 text-blue-400 mr-3" />
+                  <h4 className="text-xl font-semibold">Email</h4>
+                </div>
+                <p className="text-gray-300 mb-2">contact@webcraft.fr</p>
+                <p className="text-sm text-gray-400">Réponse sous 2h en moyenne</p>
+              </div>
+
+              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-white/20">
+                <div className="flex items-center mb-4">
+                  <Phone className="w-6 h-6 text-green-400 mr-3" />
+                  <h4 className="text-xl font-semibold">Téléphone</h4>
+                </div>
+                <p className="text-gray-300 mb-2">+33 1 23 45 67 89</p>
+                <p className="text-sm text-gray-400">Lun-Ven 9h-18h</p>
+              </div>
+
+              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-white/20">
+                <div className="flex items-center mb-4">
+                  <MapPin className="w-6 h-6 text-purple-400 mr-3" />
+                  <h4 className="text-xl font-semibold">Localisation</h4>
+                </div>
+                <p className="text-gray-300 mb-2">France, Europe</p>
+                <p className="text-sm text-gray-400">Intervention nationale et internationale</p>
+              </div>
+
+              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-white/20">
+                <div className="flex items-center mb-4">
+                  <Clock className="w-6 h-6 text-yellow-400 mr-3" />
+                  <h4 className="text-xl font-semibold">Délais</h4>
+                </div>
+                <p className="text-gray-300 mb-2">5-10 jours ouvrés</p>
+                <p className="text-sm text-gray-400">Selon la complexité du projet</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Boutons d'appel à l'action */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
+            <Button 
+              size="lg"
+              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25"
+              onClick={() => window.location.href = 'mailto:contact@webcraft.fr'}
+            >
+              <Mail className="mr-2 w-5 h-5" />
+              <span>Envoyer un email</span>
+            </Button>
+            <Button 
+              variant="outline" 
+              size="lg"
+              className="border-2 border-blue-400/50 text-blue-300 hover:bg-blue-400/10 hover:border-blue-400 px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105"
+              onClick={() => window.open('tel:+33123456789', '_self')}
+            >
+              <Phone className="mr-2 w-5 h-5" />
+              <span>Appeler maintenant</span>
+            </Button>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default HomePage;
