@@ -126,7 +126,7 @@
 }
 
 .animate-float-particle {
-  animation: float-particle 5s ease-in-out infinite;
+  animation: float-particle 8s ease-in-out infinite;
 }
 
 .animate-gradient-x {
