@@ -118,6 +118,10 @@
   animation: bounce-subtle 1s ease-in-out infinite;
 }
 
+.animate-pulse-glow-bounce {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
 .animate-scale-in {
   animation: scale-in 0.6s ease-out;
 }
