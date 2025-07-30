@@ -20,8 +20,8 @@ export default function BottomNavigation() {
       icon: Globe
     },
     {
-      name: 'Portfolio',
-      href: '/portfolio',
+      name: 'Démos',
+      href: '/#demos',
       icon: FolderOpen
     },
     {
