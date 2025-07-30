@@ -290,37 +290,7 @@ const HomePageClient = () => {
           </div>
         </div>
 
-        {/* Terminal Windows flottants modernisés - repositionnés */}
-        <div className="absolute inset-0 pointer-events-none">
-          {codeSnippets.map((snippet, index) => (
-            <div
-              key={index}
-              className={`absolute ${
-                snippet.position === 'left-top' ? 'left-8 top-40' :
-                snippet.position === 'right-top' ? 'right-8 top-56' :
-                snippet.position === 'left-middle' ? 'left-12 top-[28rem]' :
-                'right-12 top-96'
-              } hidden xl:block`}
-            >
-              <div className="bg-black/80 backdrop-blur-md rounded-xl p-5 shadow-2xl max-w-sm animate-float border border-cyan-500/30 hover:border-cyan-400/60 transition-all duration-500 hover:shadow-cyan-400/20 hover:shadow-xl">
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-3 h-3 bg-red-500 rounded-full shadow-sm"></div>
-                    <div className="w-3 h-3 bg-yellow-500 rounded-full shadow-sm"></div>
-                    <div className="w-3 h-3 bg-green-500 rounded-full shadow-sm"></div>
-                  </div>
-                  <span className="text-xs text-cyan-400 font-bold tracking-wider bg-cyan-400/10 px-2 py-1 rounded">{snippet.language}</span>
-                </div>
-                <pre className="text-xs text-gray-300 overflow-hidden whitespace-pre-wrap leading-relaxed">
-                  <code className="font-mono">
-                    {typedTexts[snippet.id] || ''}
-                    {currentLines[snippet.id] && <span className="text-cyan-400 animate-pulse bg-cyan-400/20 px-1">|</span>}
-                  </code>
-                </pre>
-              </div>
-            </div>
-          ))}
-        </div>
+        {/* Terminal Windows désactivés temporairement pour éviter la confusion */}
 
         {/* Contenu principal ultra-moderne */}
         <div className="relative z-10 pt-40 pb-24">
