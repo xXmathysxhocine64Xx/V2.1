@@ -407,10 +407,18 @@ const HomePage = () => {
                 color: "from-indigo-500 to-indigo-600"
               }
             ].map((service, index) => (
-              <div key={index} className={`bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-gray-100 group animate-scale-in animation-delay-${index * 100}`}>
+              <div key={index} className={`bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-gray-100 group animate-scale-in ${
+                index === 0 ? 'animation-delay-100' :
+                index === 1 ? 'animation-delay-200' :
+                index === 2 ? 'animation-delay-300' :
+                index === 3 ? 'animation-delay-400' :
+                index === 4 ? 'animation-delay-500' :
+                'animation-delay-600'
+              }`}>
                 <div className="flex justify-center mb-6">
-                  <div className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 animate-pulse-glow`}
-                       style={{animationDelay: `${index * 0.2}s`}}>
+                  <div className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 animate-pulse-glow ${
+                    index % 2 === 0 ? 'animation-delay-100' : 'animation-delay-300'
+                  }`}>
                     <service.icon className="h-8 w-8 text-white" />
                   </div>
                 </div>
@@ -422,9 +430,13 @@ const HomePage = () => {
                 </p>
                 <ul className="space-y-3">
                   {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center text-sm text-gray-700 animate-fade-in-up" 
-                        style={{animationDelay: `${(index * 4 + featureIndex) * 0.1}s`}}>
-                      <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mr-3 animate-bounce-subtle"></div>
+                    <li key={featureIndex} className={`flex items-center text-sm text-gray-700 animate-fade-in-up ${
+                      featureIndex === 0 ? 'animation-delay-100' :
+                      featureIndex === 1 ? 'animation-delay-200' :
+                      featureIndex === 2 ? 'animation-delay-300' :
+                      'animation-delay-400'
+                    }`}>
+                      <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mr-3 animate-bounce-subtle animation-delay-100"></div>
                       {feature}
                     </li>
                   ))}
