@@ -1,8 +1,6 @@
-'use client'
-
-import React from 'react';
-import HomePageClient from '../components/HomePageClient';
+import { redirect } from 'next/navigation'
 
 export default function HomePage() {
-  return <HomePageClient />;
+  // Redirection immédiate côté serveur vers /accueil
+  redirect('/accueil')
 }

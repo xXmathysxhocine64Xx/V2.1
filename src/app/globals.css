@@ -2,108 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ========================================
+   WEBCRAFT - STYLES OPTIMISÉS
+   ======================================== */
+
 /* Variables CSS WebCraft */
 :root {
+  --primary-600: 37 99 235;
   --background: 255 255 255;
   --background-secondary: 248 250 252;
-  --background-tertiary: 241 245 249;
-  --foreground: 15 23 42;
-  --foreground-secondary: 71 85 105;
-  --foreground-muted: 148 163 184;
+  --background-card: 255 255 255;
+  --text-primary: 15 23 42;
+  --text-secondary: 71 85 105;
+  --text-muted: 148 163 184;
   --border: 226 232 240;
-  --border-secondary: 203 213 225;
-  --card-background: 255 255 255;
-  --card-border: 226 232 240;
-  
-  --primary: 59 130 246;
-  --primary-foreground: 255 255 255;
-  --secondary: 248 250 252;
-  --secondary-foreground: 15 23 42;
-  --accent: 241 245 249;
-  --accent-foreground: 15 23 42;
-  --destructive: 239 68 68;
-  --destructive-foreground: 255 255 255;
-  --muted: 148 163 184;
-  --muted-foreground: 100 116 139;
-  --card: 255 255 255;
-  --card-foreground: 15 23 42;
-  --ring: 59 130 246;
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
 }
 
 .dark {
   --background: 15 23 42;
   --background-secondary: 30 41 59;
-  --background-tertiary: 51 65 85;
-  --foreground: 248 250 252;
-  --foreground-secondary: 203 213 225;
-  --foreground-muted: 148 163 184;
+  --background-card: 30 41 59;
+  --text-primary: 248 250 252;
+  --text-secondary: 203 213 225;
+  --text-muted: 148 163 184;
   --border: 51 65 85;
-  --border-secondary: 71 85 105;
-  --card-background: 30 41 59;
-  --card-border: 51 65 85;
-  
-  --primary: 59 130 246;
-  --primary-foreground: 255 255 255;
-  --secondary: 30 41 59;
-  --secondary-foreground: 248 250 252;
-  --accent: 51 65 85;
-  --accent-foreground: 248 250 252;
-  --destructive: 239 68 68;
-  --destructive-foreground: 255 255 255;
-  --muted: 100 116 139;
-  --muted-foreground: 148 163 184;
-  --card: 30 41 59;
-  --card-foreground: 248 250 252;
-  --ring: 59 130 246;
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3);
 }
 
-/* Reset et base WebCraft */
-* {
-  border-color: rgb(var(--border));
-}
-
+/* Body configuration WebCraft */
 body {
   background-color: rgb(var(--background));
-  color: rgb(var(--foreground));
+  color: rgb(var(--text-primary));
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-@keyframes spin-slow {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Transitions optimisées */
+* {
+  transition: none;
 }
 
-.animate-spin-slow {
-  animation: spin-slow 8s linear infinite;
+button, a, .interactive {
+  transition: background-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
 }
 
-/* Effet de brillance pour les boutons */
-@keyframes shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
+/* ========================================
+   ANIMATIONS WEBCRAFT OPTIMISÉES
+   ======================================== */
 
-.shimmer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-  animation: shimmer 2s infinite;
-}
-
-/* Animations WebCraft personnalisées */
 @keyframes fade-in-up {
   0% {
     opacity: 0;
@@ -115,39 +62,9 @@ body {
   }
 }
 
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-@keyframes slide-right {
-  0% {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  5% {
-    opacity: 0.3;
-  }
-  10% {
-    opacity: 0.6;
-  }
-  85% {
-    opacity: 0.6;
-  }
-  95% {
-    opacity: 0.2;
-  }
-  100% {
-    transform: translateX(100vw);
-    opacity: 0;
-  }
+@keyframes float-optimized {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -8px, 0); }
 }
 
 @keyframes float-particle {
@@ -180,10 +97,10 @@ body {
 
 @keyframes pulse-glow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.3);
   }
   50% {
-    box-shadow: 0 0 40px rgba(59, 130, 246, 0.6), 0 0 60px rgba(147, 51, 234, 0.4);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.6), 0 0 30px rgba(147, 51, 234, 0.4);
   }
 }
 
@@ -207,16 +124,15 @@ body {
   }
 }
 
+/* Classes d'animation WebCraft */
 .animate-fade-in-up {
   animation: fade-in-up 0.6s ease-out;
 }
 
 .animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
-.animate-slide-right {
-  animation: slide-right 28s linear infinite;
+  animation: float-optimized 4s ease-in-out infinite;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .animate-float-particle {
@@ -240,292 +156,26 @@ body {
   animation: scale-in 0.5s ease-out forwards;
 }
 
-.animation-delay-100 {
-  animation-delay: 0.1s;
-}
+/* Délais d'animation */
+.animation-delay-100 { animation-delay: 0.1s; }
+.animation-delay-200 { animation-delay: 0.2s; }
+.animation-delay-300 { animation-delay: 0.3s; }
+.animation-delay-400 { animation-delay: 0.4s; }
+.animation-delay-500 { animation-delay: 0.5s; }
+.animation-delay-600 { animation-delay: 0.6s; }
 
-.animation-delay-200 {
-  animation-delay: 0.2s;
-}
+/* ========================================
+   EFFETS VISUELS WEBCRAFT
+   ======================================== */
 
-.animation-delay-300 {
-  animation-delay: 0.3s;
-}
-
-.animation-delay-400 {
-  animation-delay: 0.4s;
-}
-
-.animation-delay-500 {
-  animation-delay: 0.5s;
-}
-
-.animation-delay-600 {
-  animation-delay: 0.6s;
-}
-
-/* Grille technologique WebCraft */
-.bg-grid-pattern {
-  background-image: 
-    linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
-  background-size: 20px 20px;
-}
-
-/* Scroll smooth WebCraft */
+/* Scroll smooth */
 html {
   scroll-behavior: smooth;
   overscroll-behavior: contain;
 }
 
-/* Sections WebCraft */
 section {
   scroll-margin-top: 80px;
-}
-
-/* Transitions globales WebCraft */
-button, a, input, textarea, select {
-  transition: all 0.2s ease-in-out;
-}
-
-/* Focus states WebCraft */
-input:focus, textarea:focus, select:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-}
-
-/* Cards hover WebCraft */
-.card-hover {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card-hover:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-}
-
-/* Images WebCraft */
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Animations au scroll WebCraft */
-.scroll-animation {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.scroll-animation.in-view {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Header blur WebCraft */
-.header-blur {
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-/* Gradients WebCraft */
-.gradient-bg {
-  background: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%);
-}
-
-.text-gradient {
-  background: linear-gradient(135deg, #3B82F6, #1E40AF);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Effets de verre (Glassmorphism) WebCraft */
-.glass-effect {
-  background: rgba(255, 255, 255, 0.15) !important;
-  backdrop-filter: blur(16px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.25) !important;
-  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.4) !important;
-}
-
-.glass-effect-strong {
-  background: rgba(255, 255, 255, 0.2) !important;
-  backdrop-filter: blur(20px) saturate(200%) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(200%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.3) !important;
-  box-shadow: 0 12px 40px rgba(31, 38, 135, 0.5) !important;
-}
-
-/* Mode sombre - Effet de verre */
-.dark .glass-effect {
-  background: rgba(15, 23, 42, 0.3) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
-}
-
-.dark .glass-effect-strong {
-  background: rgba(15, 23, 42, 0.4) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7) !important;
-}
-
-/* Navigation WebCraft */
-.glass-nav-item {
-  background: rgba(255, 255, 255, 0.12) !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  color: #1e293b !important;
-  font-weight: 500 !important;
-}
-
-/* Masquer la navigation indésirable en double - version corrigée */
-nav[class*="backdrop-blur-xl"][class*="rounded-2xl"][class*="px-8"] {
-  display: none !important;
-  visibility: hidden !important;
-}
-
-/* Alternative plus spécifique */
-nav[class*="bg-white"][class*="backdrop-blur-xl"][class*="border"][class*="border-white"] {
-  display: none !important;
-  visibility: hidden !important;
-}
-
-.glass-nav-item:hover {
-  background: rgba(59, 130, 246, 0.25) !important;
-  border: 1px solid rgba(59, 130, 246, 0.4) !important;
-  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3) !important;
-  transform: translateY(-1px) !important;
-  color: #1e293b !important;
-}
-
-.glass-nav-item.nav-active {
-  background: linear-gradient(to right, rgb(37, 99, 235), rgb(147, 51, 234)) !important;
-  border: 1px solid rgba(59, 130, 246, 0.6) !important;
-  color: white !important;
-  font-weight: 600 !important;
-  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4) !important;
-}
-
-.glass-nav-item.nav-active:hover {
-  background: linear-gradient(to right, rgb(29, 78, 216), rgb(126, 34, 206)) !important;
-  box-shadow: 0 6px 25px rgba(59, 130, 246, 0.5) !important;
-  color: white !important;
-}
-
-/* Mode sombre navigation */
-.dark .glass-nav-item {
-  background: rgba(30, 41, 59, 0.6) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  color: #e2e8f0 !important;
-}
-
-.dark .glass-nav-item:hover {
-  background: rgba(59, 130, 246, 0.3) !important;
-  border: 1px solid rgba(59, 130, 246, 0.5) !important;
-  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4) !important;
-  color: white !important;
-}
-
-.dark .glass-nav-item.nav-active {
-  background: linear-gradient(to right, rgb(37, 99, 235), rgb(147, 51, 234)) !important;
-  border: 1px solid rgba(59, 130, 246, 0.7) !important;
-  color: white !important;
-}
-
-/* Mobile WebCraft */
-.mobile-glass-button {
-  background: rgba(255, 255, 255, 0.2) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.25) !important;
-  box-shadow: 0 4px 16px rgba(31, 38, 135, 0.3) !important;
-  color: #1e293b !important;
-}
-
-.mobile-glass-button:hover {
-  background: rgba(59, 130, 246, 0.3) !important;
-  border: 1px solid rgba(59, 130, 246, 0.5) !important;
-  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4) !important;
-  color: #1e293b !important;
-}
-
-.dark .mobile-glass-button {
-  background: rgba(30, 41, 59, 0.7) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5) !important;
-  color: #e2e8f0 !important;
-}
-
-.dark .mobile-glass-button:hover {
-  background: rgba(59, 130, 246, 0.4) !important;
-  border: 1px solid rgba(59, 130, 246, 0.6) !important;
-  color: white !important;
-}
-
-.mobile-glass-menu {
-  background: rgba(255, 255, 255, 0.25) !important;
-  backdrop-filter: blur(20px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
-  border-left: 1px solid rgba(255, 255, 255, 0.3) !important;
-  box-shadow: -10px 0 50px rgba(31, 38, 135, 0.4) !important;
-}
-
-.dark .mobile-glass-menu {
-  background: rgba(15, 23, 42, 0.4) !important;
-  border-left: 1px solid rgba(255, 255, 255, 0.2) !important;
-  box-shadow: -10px 0 50px rgba(0, 0, 0, 0.7) !important;
-}
-
-/* Effet de brillance WebCraft */
-.glass-shine {
-  position: relative;
-  overflow: hidden;
-}
-
-.glass-shine::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.15),
-    transparent
-  );
-  transition: left 0.8s ease;
-  pointer-events: none;
-}
-
-.glass-shine:hover::before {
-  left: 100%;
-}
-
-/* Boutons modernes WebCraft */
-.btn-modern {
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-.btn-modern::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  transition: left 0.5s ease;
-}
-
-.btn-modern:hover::before {
-  left: 100%;
 }
 
 /* Hover effects WebCraft */
@@ -538,18 +188,49 @@ nav[class*="bg-white"][class*="backdrop-blur-xl"][class*="border"][class*="borde
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive WebCraft */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Gradients WebCraft */
+.text-gradient {
+  background: linear-gradient(135deg, #3B82F6, #1E40AF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bg-gradient-webcraft {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Glassmorphism WebCraft */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.4) !important;
+}
+
+.dark .glass-effect {
+  background: rgba(15, 23, 42, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* ========================================
+   RESPONSIVE WEBCRAFT
+   ======================================== */
+
 @media (max-width: 768px) {
   .animate-float {
-    animation-duration: 6s;
-  }
-  
-  .blur-3xl {
-    backdrop-filter: blur(15px) !important;
-  }
-  
-  .blur-2xl {
-    backdrop-filter: blur(12px) !important;
+    animation: float-optimized 6s ease-in-out infinite;
   }
   
   .shadow-lg, .shadow-xl, .shadow-2xl {
@@ -560,16 +241,12 @@ nav[class*="bg-white"][class*="backdrop-blur-xl"][class*="border"][class*="borde
   .safe-area-bottom {
     padding-bottom: env(safe-area-inset-bottom);
   }
-  
-  .safe-area-inset {
-    padding-top: env(safe-area-inset-top);
-    padding-bottom: env(safe-area-inset-bottom);
-    padding-left: env(safe-area-inset-left);
-    padding-right: env(safe-area-inset-right);
-  }
 }
 
-/* Scrollbar WebCraft */
+/* ========================================
+   SCROLLBAR WEBCRAFT
+   ======================================== */
+
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -587,7 +264,10 @@ nav[class*="bg-white"][class*="backdrop-blur-xl"][class*="border"][class*="borde
   background: linear-gradient(to bottom, rgb(37 99 235), rgb(124 58 237));
 }
 
-/* Classes utilitaires WebCraft */
+/* ========================================
+   CLASSES UTILITAIRES WEBCRAFT
+   ======================================== */
+
 @layer utilities {
   .bg-theme { 
     background-color: rgb(var(--background)); 
@@ -596,17 +276,18 @@ nav[class*="bg-white"][class*="backdrop-blur-xl"][class*="border"][class*="borde
     background-color: rgb(var(--background-secondary)); 
   }
   .bg-theme-card { 
-    background-color: rgb(var(--card-background));
+    background-color: rgb(var(--background-card));
     border-color: rgb(var(--border));
+    box-shadow: var(--shadow);
   }
   .text-theme { 
-    color: rgb(var(--foreground)); 
+    color: rgb(var(--text-primary)); 
   }
   .text-theme-secondary { 
-    color: rgb(var(--foreground-secondary)); 
+    color: rgb(var(--text-secondary)); 
   }
   .text-theme-muted { 
-    color: rgb(var(--foreground-muted)); 
+    color: rgb(var(--text-muted)); 
   }
   .border-theme { 
     border-color: rgb(var(--border)); 
