@@ -23,13 +23,13 @@ export default function Navigation() {
   const navigation = [
     {
       name: 'Accueil',
-      href: '/accueil',
+      href: '/',
       icon: Home,
       description: 'Page d\'accueil WebCraft'
     },
     {
       name: 'Services',
-      href: '/services',
+      href: '/#services',
       icon: Globe,
       description: 'Nos services web'
     },
@@ -47,13 +47,36 @@ export default function Navigation() {
     },
     {
       name: 'Contact',
-      href: '/contact',
+      href: '/#contact',
       icon: Mail,
       description: 'Nous contacter'
     }
   ]
 
-  const isActive = (href) => pathname === href
+  const isActive = (href) => {
+    if (href === '/') {
+      return pathname === '/'
+    }
+    if (href.startsWith('/#')) {
+      return pathname === '/' && window?.location?.hash === href.slice(1)
+    }
+    return pathname === href
+  }
+
+  const handleNavClick = (href) => {
+    if (href.startsWith('/#')) {
+      // Scroll vers la section si nous sommes déjà sur la page d'accueil
+      if (pathname === '/') {
+        const element = document.getElementById(href.slice(2))
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }
+      } else {
+        // Sinon naviguer vers la page d'accueil avec l'ancre
+        window.location.href = href
+      }
+    }
+  }
 
   return (
     <>
@@ -66,7 +89,7 @@ export default function Navigation() {
           <div className="flex justify-between items-center h-16">
             {/* Logo WebCraft */}
             <div className="flex-shrink-0">
-              <Link href="/accueil" className="flex items-center space-x-2 group">
+              <Link href="/" className="flex items-center space-x-2 group">
                 <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
                   <Palette className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                 </div>
@@ -89,6 +112,12 @@ export default function Navigation() {
                       className={`relative group flex items-center px-4 py-2 rounded-lg text-sm font-normal transition-all duration-300 glass-nav-item glass-shine ${
                         isActive(item.href) ? 'nav-active' : ''
                       }`}
+                      onClick={(e) => {
+                        if (item.href.startsWith('/#')) {
+                          e.preventDefault()
+                          handleNavClick(item.href)
+                        }
+                      }}
                     >
                       <Icon className="w-4 h-4 mr-2" />
                       {item.name}
@@ -181,7 +210,13 @@ export default function Navigation() {
                       ? 'text-blue-600 dark:text-blue-400 bg-blue-50/50 dark:bg-blue-900/20 border-r-2 border-blue-600 dark:border-blue-400'
                       : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
                   }`}
-                  onClick={() => setIsOpen(false)}
+                  onClick={(e) => {
+                    setIsOpen(false)
+                    if (item.href.startsWith('/#')) {
+                      e.preventDefault()
+                      setTimeout(() => handleNavClick(item.href), 100)
+                    }
+                  }}
                   style={{ 
                     animationDelay: `${index * 50}ms`,
                     minHeight: '60px' 

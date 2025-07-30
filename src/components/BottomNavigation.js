@@ -11,12 +11,12 @@ export default function BottomNavigation() {
   const navigation = [
     {
       name: 'Accueil',
-      href: '/accueil',
+      href: '/',
       icon: Home
     },
     {
       name: 'Services',
-      href: '/services',
+      href: '/#services',
       icon: Globe
     },
     {
@@ -31,12 +31,35 @@ export default function BottomNavigation() {
     },
     {
       name: 'Contact',
-      href: '/contact',
+      href: '/#contact',
       icon: Mail
     }
   ]
 
-  const isActive = (href) => pathname === href
+  const isActive = (href) => {
+    if (href === '/') {
+      return pathname === '/'
+    }
+    if (href.startsWith('/#')) {
+      return pathname === '/' && window?.location?.hash === href.slice(1)
+    }
+    return pathname === href
+  }
+
+  const handleNavClick = (href) => {
+    if (href.startsWith('/#')) {
+      // Scroll vers la section si nous sommes déjà sur la page d'accueil
+      if (pathname === '/') {
+        const element = document.getElementById(href.slice(2))
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }
+      } else {
+        // Sinon naviguer vers la page d'accueil avec l'ancre
+        window.location.href = href
+      }
+    }
+  }
 
   return (
     <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 safe-area-bottom">
@@ -53,6 +76,12 @@ export default function BottomNavigation() {
                     ? 'text-blue-600 dark:text-blue-400'
                     : 'text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400'
                 }`}
+                onClick={(e) => {
+                  if (item.href.startsWith('/#')) {
+                    e.preventDefault()
+                    handleNavClick(item.href)
+                  }
+                }}
               >
                 <div className={`w-8 h-8 rounded-lg flex items-center justify-center mb-1 transition-all duration-200 ${
                   isActive(item.href)
