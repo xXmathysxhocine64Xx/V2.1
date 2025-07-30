@@ -195,15 +195,15 @@ const HomePageClient = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section WebCraft Ultra-Moderne */}
-      <section id="accueil" className="min-h-screen relative overflow-hidden pt-16">
-        {/* Background Ultra-Moderne avec Mesh Gradient */}
+      {/* Hero Section WebCraft Ultra-Moderne - Version Propre */}
+      <section id="accueil" className="min-h-screen relative overflow-hidden">
+        {/* Background Ultra-Moderne simplifié */}
         <div className="absolute inset-0">
           {/* Gradient de base modernisé */}
           <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-slate-900 to-black"></div>
           
           {/* Mesh Gradient Overlay */}
-          <div className="absolute inset-0 opacity-80" style={{
+          <div className="absolute inset-0 opacity-60" style={{
             background: `
               radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.4) 0%, transparent 50%),
               radial-gradient(circle at 80% 20%, rgba(147, 51, 234, 0.4) 0%, transparent 50%),
@@ -211,53 +211,12 @@ const HomePageClient = () => {
             `
           }}></div>
 
-          {/* Formes géométriques flottantes */}
+          {/* Particules subtiles */}
           <div className="absolute inset-0">
-            {/* Cercles lumineux */}
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute top-3/4 right-1/4 w-80 h-80 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse animation-delay-200"></div>
-            <div className="absolute top-1/2 left-3/4 w-64 h-64 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-full blur-3xl animate-pulse animation-delay-400"></div>
-            
-            {/* Hexagones technologiques */}
-            {mounted && Array.from({ length: 12 }).map((_, i) => (
-              <div
-                key={`hex-${i}`}
-                className="absolute opacity-10"
-                style={{
-                  left: `${10 + (i * 15) % 80}%`,
-                  top: `${20 + (i * 12) % 60}%`,
-                  transform: `rotate(${i * 30}deg)`,
-                  animationDelay: `${i * 0.5}s`
-                }}
-              >
-                <div className="w-16 h-16 border-2 border-blue-400/30 transform rotate-45 animate-spin-slow"></div>
-              </div>
-            ))}
-            
-            {/* Lignes connectées */}
-            <svg className="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 1000 800">
-              <defs>
-                <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="rgb(59, 130, 246)" stopOpacity="0"/>
-                  <stop offset="50%" stopColor="rgb(59, 130, 246)" stopOpacity="1"/>
-                  <stop offset="100%" stopColor="rgb(147, 51, 234)" stopOpacity="0"/>
-                </linearGradient>
-              </defs>
-              <path d="M 100 200 Q 500 100 900 300" stroke="url(#lineGradient)" strokeWidth="2" fill="none" className="animate-pulse">
-                <animate attributeName="stroke-dasharray" values="0,1000;1000,0" dur="4s" repeatCount="indefinite"/>
-              </path>
-              <path d="M 200 600 Q 500 400 800 500" stroke="url(#lineGradient)" strokeWidth="2" fill="none" className="animate-pulse animation-delay-200">
-                <animate attributeName="stroke-dasharray" values="0,1000;1000,0" dur="4s" repeatCount="indefinite"/>
-              </path>
-            </svg>
-          </div>
-
-          {/* Particules technologiques modernisées */}
-          <div className="absolute inset-0">
-            {mounted && particlesData.map((particle) => (
+            {mounted && particlesData.slice(0, 20).map((particle) => (
               <div
                 key={particle.id}
-                className="absolute opacity-60"
+                className="absolute opacity-40"
                 style={{
                   left: `${particle.left}%`,
                   top: `${particle.top}%`,
@@ -265,35 +224,14 @@ const HomePageClient = () => {
                   animationDuration: `${particle.duration}s`
                 }}
               >
-                <div className="w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full animate-float-particle shadow-lg shadow-blue-400/50"></div>
-              </div>
-            ))}
-          </div>
-
-          {/* Code Matrix moderne */}
-          <div className="absolute inset-0 opacity-15">
-            {backgroundCodeLines.slice(0, 20).map((line, index) => (
-              <div
-                key={index}
-                className="absolute text-sm text-cyan-400 font-mono whitespace-nowrap animate-slide-right"
-                style={{
-                  top: `${(index * 40) % 100}%`,
-                  left: '-100%',
-                  animationDelay: `${index * 1.2}s`,
-                  animationDuration: '25s',
-                  textShadow: '0 0 10px rgba(34, 197, 255, 0.5)'
-                }}
-              >
-                {line}
+                <div className="w-1 h-1 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full animate-float-particle"></div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Terminal Windows désactivés temporairement pour éviter la confusion */}
-
-        {/* Contenu principal ultra-moderne */}
-        <div className="relative z-10 pt-40 pb-24">
+        {/* Contenu principal ultra-moderne - Version propre */}
+        <div className="relative z-10 pt-32 pb-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
               {/* Titre principal révolutionnaire */}
