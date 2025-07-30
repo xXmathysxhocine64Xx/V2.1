@@ -217,15 +217,15 @@ const HomePage = () => {
           
           {/* Particules flottantes améliorées */}
           <div className="absolute inset-0">
-            {Array.from({ length: 50 }).map((_, i) => (
+            {mounted && particlesData.map((particle) => (
               <div
-                key={i}
+                key={particle.id}
                 className="absolute w-1 h-1 bg-blue-400 rounded-full animate-float-particle"
                 style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                  animationDelay: `${Math.random() * 10}s`,
-                  animationDuration: `${7 + Math.random() * 8}s`
+                  left: `${particle.left}%`,
+                  top: `${particle.top}%`,
+                  animationDelay: `${particle.delay}s`,
+                  animationDuration: `${particle.duration}s`
                 }}
               />
             ))}
