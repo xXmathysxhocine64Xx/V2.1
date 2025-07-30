@@ -75,7 +75,8 @@ export default function RootLayout({ children }) {
     <html lang="fr">
       <body className="antialiased bg-theme text-theme">
         <ThemeProvider>
-          <Navigation />
+          {/* Navigation temporairement désactivée pour debug */}
+          {/* <Navigation /> */}
           <ThemeToggle />
           <main className="pt-0 pb-20 md:pb-0 bg-theme min-h-screen relative overflow-x-hidden">
             {children}
