@@ -176,8 +176,8 @@ const HeroSection = () => {
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 5}s`,
-                animationDuration: `${3 + Math.random() * 4}s`
+                animationDelay: `${Math.random() * 10}s`,
+                animationDuration: `${7 + Math.random() * 8}s`
               }}
             />
           ))}
