@@ -36,8 +36,8 @@ export default function Navigation() {
       description: 'Nos services web'
     },
     {
-      name: 'Portfolio',
-      href: '/portfolio',
+      name: 'Démos',
+      href: '/#demos',
       icon: FolderOpen,
       description: 'Nos réalisations'
     },
